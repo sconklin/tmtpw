@@ -9,7 +9,7 @@
   <body>      
     <canvas id="c" width="300" height="300" style="border:1px solid #ccc"></canvas>
     <input type="file" id="selectFile"  style="visibility:hidden;position:absolute;top:-50;left:-50"/>
-    <a href="javascript:onLoad('selectFile');">Select a Measurement file</a>  
+    <a href="javascript:clickOn('selectFile');">Select a Measurement file</a>  
     <script type="text/javascript" src="./Measurements.js"></script>
     <script>
         
@@ -21,11 +21,11 @@
 //TODO: save to PDF
 //TODO: print PDF
 
-//display select file dialog
-function onLoad(id) {
-    fileInput = document.getElementById(id);
-    fileInput.click();
-}  // onLoad()
+//synthesize a click on the specified element
+function clickOn(id) {
+    element = document.getElementById(id);
+    element.click();
+}
 
 //main
 (function() {
