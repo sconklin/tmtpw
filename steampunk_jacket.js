@@ -494,6 +494,7 @@ function patternPoint(group, pname, pnt, svg_cmd) {
 	stroke: 'red',
 	hasBorders: false,
 	hasControls: false,
+	lockUniScaling: true,
 	name: pname,
 	selectable: true,
 	reference: true,
@@ -521,6 +522,7 @@ function controlPoint(pname, pnt) {
 	stroke: 'gray',
 	hasBorders: false,
 	hasControls: false,
+	lockUniScaling: true,
 	name: pname,
 	reference: 'true',
 	coords: pnt.left +', '+ pnt.top
