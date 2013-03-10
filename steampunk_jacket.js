@@ -27,7 +27,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "4",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": false
 	},
 	"buttonhole_style": {
 	    "fill": "none",
@@ -36,7 +38,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "3",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": false 	    
 	},
 	"cuttingline_style": {
 	    "fill": "none",
@@ -45,7 +49,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "4",
 	    "hasBorders": false,
-	    "hasControls": false
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": false
 	},
 	"dartline_style": {
 	    "fill": "none",
@@ -56,7 +62,9 @@ function drawPattern(mydata) {
 	    "stroke-dasharray": "6,6",
 	    "stroke-dashoffset": "0",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": false
 	},
 	"default_textblock_text_style": {
 	    "fill": "#000000",
@@ -87,7 +95,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "6",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": false 	    
 	},
 	"grainline_style": {
 	    "fill": "none",
@@ -96,7 +106,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "4",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": false 	    
 	},
 	"gridline_style": {
 	    "fill": "none",
@@ -107,7 +119,9 @@ function drawPattern(mydata) {
 	    "stroke-dasharray": "6,6",
 	    "stroke-dashoffset": "0",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": true    
 	},
 	"hemline_style": {
 	    "fill": "none",
@@ -118,7 +132,9 @@ function drawPattern(mydata) {
 	    "stroke-dasharray": "6,6",
 	    "stroke-dashoffset": "0",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": false 	    
 	},
 	"line_style": {
 	    "fill": "none",
@@ -127,7 +143,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "4",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": false 	    
 	},
 	"markingline_style": {
 	    "fill": "none",
@@ -136,7 +154,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "5",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": true	    
 	},
 	"placement_style": {
 	    "fill": "none",
@@ -152,14 +172,18 @@ function drawPattern(mydata) {
 	    "stroke": "red",
 	    "stroke-width": "1",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": true 	    
 	},
 	"controlpoint_style": {
 	    "fill": "none",
 	    "stroke": "gray",
 	    "stroke-width": "1",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": true 	    
 	},
 	"circle_style": {
 	    "fill": "none",
@@ -168,7 +192,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "4",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": true 	    
 	},
 	"point_text_style": {
 	    "fill": "darkblue",
@@ -181,7 +207,9 @@ function drawPattern(mydata) {
 	    "text-anchor": "right",
 	    "vertical-align": "top",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": true 	    
 	},
 	"control_point_text_style": {
 	    "fill": "gray",
@@ -194,7 +222,9 @@ function drawPattern(mydata) {
 	    "text-anchor": "right",
 	    "vertical-align": "top",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": true 	    
 	},
 	"reference_path_style": {
 	    "fill": "none",
@@ -205,7 +235,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "2",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": true 	    
 	},
 	"seamline_style": {
 	    "fill": "none",
@@ -216,7 +248,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "4",
 	    "hasBorders": false,
-	    "hasControls": false	    
+	    "hasControls": false,
+	    "selectable": true,
+	    "reference": false 	    
 	},
 	"textblock_box_style": {
 	    "fill": "none",
@@ -381,8 +415,8 @@ function drawPattern(mydata) {
 
     //create group for jacket pattern piece A
     var jacket = new fabric.Group();
-    canvas.add(jacket);
     A = jacket;
+    canvas.add(A);
 
     //pattern formulas
     var scale = bust_circumference/2.0;
@@ -413,29 +447,29 @@ function drawPattern(mydata) {
     var a24 = patternPoint(A, 'a24', leftPoint(a12, 2 * CM),'L'); //back hip side
     var a25 = patternPoint(A, 'a25', leftPoint(a8, 1.5 * CM),'L'); //back hem side
 
-
+    //list point names & locations in console.log
     displayPoints(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25);
-
-    //pattern paths    
-    //var neck_path = 'M ' + a1.coords + ' Q '+ a2_c1.coords + ' ' + a2.coords
-    //var curve_a = new fabric.Path(neck_path, { fill: '', stroke: 'black' });
-    //curve_a.selectable = false;
-    //canvas.add(curve_a);
-    //gridlines
+   
+    //jacket gridline
     var path_str = formatPath('M', a1, 'L', a6, 'L', a8, 'L', a7, 'z');
     var Agridline = new fabric.Path(path_str, styles.gridline_style);
-    canvas.add(Agridline);
-    //seamlines
+    canvas.add(Agridline);    
+    //A.add(Agridline);
+
+    //jacket seamline
     path_str = formatPath('M', a1, 'L', a2, 'L', a13, 'L', a14, 'L', a15, 'L', a16, 'L', a25);
     path_str += formatPath( ' L', a24, 'L', a23, 'L', a22, 'L', a20, 'L', a21, 'L', a19, 'L', a18, 'Q', a17, a1, 'z');
     var Aseamline = new fabric.Path(path_str, styles.seamline_style);
     canvas.add(Aseamline);
-    //cuttinglines
+    //jacket cuttingline
     Acuttingline = new fabric.Path(path_str, styles.cuttingline_style);
     canvas.add(Acuttingline);
     Aseamline.sendToBack(); //seamline under points
     Acuttingline.sendToBack(); //cuttingline under seamline
     Agridline.sendToBack(); //gridline under cuttingline
+    
+    //draw jacket
+    canvas.add(A);    
     
 }; //drawPattern()
 
@@ -458,7 +492,6 @@ function point(left, top) {
 	top: top,
 	coords: left +', '+ top
     });
-    console.log('new point '+ c.left +' '+ c.top);
     return c;
 } // point()
 
@@ -485,7 +518,7 @@ function rightPoint(pnt, length) {
 // ------- drawn canvas points -------
 
 function patternPoint(group, pname, pnt, svg_cmd) {
-    var c = new fabric.Circle({
+    var p = new fabric.Circle({
 	left: pnt.left,
 	top: pnt.top,
 	strokeWidth: 1,
@@ -501,10 +534,18 @@ function patternPoint(group, pname, pnt, svg_cmd) {
 	coords: pnt.left +', '+  pnt.top,
 	cmd: svg_cmd
     });
-
-    group.add(c);
-    canvas.add(c);   
-    return c;
+    var ptext = new fabric.Text(pname, {
+	fontSize: 10,
+	left: pnt.left,
+	top: pnt.top - 9,
+	hasBorders: false,
+	hasControls: false,
+	lockUniScaling: true,
+	selectable: true,
+	reference: true,      
+    });    
+    canvas.add(p);
+    return p;
 } // patternPointXY()
 
 function patternPointXY(group, pname, left, top, svg_cmd) {
@@ -527,7 +568,6 @@ function controlPoint(pname, pnt) {
 	reference: 'true',
 	coords: pnt.left +', '+ pnt.top
     }); 
-    canvas.add(c);
     return c;
 } // controlPoint()
 
