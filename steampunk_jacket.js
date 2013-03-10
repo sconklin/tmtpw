@@ -555,12 +555,14 @@ function drawPattern(mydata) {
 
     //create group for jacket pattern piece A
     var jacket = new fabric.Group();
-    var A = jacket;
+    var back_jacket = new fabric.Group();
+    var A = back_jacket;
     canvas.add(A);
 
     //pattern formulas
     var scale = bust_circumference / 2.0;
 
+    //back jacket A
     var a1 = patternPointXY(A, 'a1', BORDER, BORDER, 'M'); //nape
     var a2 = patternPoint(A, 'a2', downPoint(a1, 7.5 * CM), 'L'); //back shoulder center
     var a3 = patternPoint(A, 'a3', downPoint(a1, back_underarm_height), 'L'); //back underarm height
@@ -590,25 +592,23 @@ function drawPattern(mydata) {
     //list point names & locations in console.log
     displayPoints(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25);
 
-    //jacket gridline
+    //back jacket gridline
     var path_str = formatPath('M', a1, 'L', a6, 'L', a8, 'L', a7, 'z');
     var Agridline = new fabric.Path(path_str, styles.gridline_style);
     canvas.add(Agridline);
-    //A.add(Agridline);
-
-    //jacket seamline
+    //back jacket seamline
     path_str = formatPath('M', a1, 'L', a2, 'L', a13, 'L', a14, 'L', a15, 'L', a16, 'L', a25);
     path_str += formatPath(' L', a24, 'L', a23, 'L', a22, 'L', a20, 'L', a21, 'L', a19, 'L', a18, 'Q', a17, a1, 'z');
     var Aseamline = new fabric.Path(path_str, styles.seamline_style);
     canvas.add(Aseamline);
-    //jacket cuttingline
+    //back jacket cuttingline
     var Acuttingline = new fabric.Path(path_str, styles.cuttingline_style);
     canvas.add(Acuttingline);
     Aseamline.sendToBack(); //seamline under points
     Acuttingline.sendToBack(); //cuttingline under seamline
     Agridline.sendToBack(); //gridline under cuttingline
 
-    //draw jacket
+    //draw back jacket
     canvas.add(A);
 
 } //drawPattern()
