@@ -2,6 +2,35 @@
 // won't get reloaded
 $.ajaxSetup({ cache: false });
 
+function drawPatternIfReady(){
+    // See whether everything is ready to draw a pattern.
+    // If it is, call drawPattern
+
+    // Are the styles loaded?
+    // Are measurements loaded?
+    // Is a pattern Script Loaded?
+    if ((window.styleData != 'undefined') &&
+	(typeof window.measurementData != 'undefined') &&
+	(typeof drawPattern == 'function')){
+	// do any setup work here for the canvas (none yet)
+
+	// Draw the pattern
+	drawPattern(window.measurementData, window.styleData);
+    }
+}
+
+function loadStyles(styleFileName){
+    $.getJSON(styleFileName, function(sdata) {
+	// Now we have measurement data
+	window.styleData = sdata
+
+	// See whether we're ready to draw
+	drawPatternIfReady();
+    });
+}
+
+loadStyles("tmtp_styles.json");
+
 // catch the click on the measurements button
 $("#SMButton").click(function(e){
     e.preventDefault();
@@ -20,20 +49,15 @@ $("#SPButton").click(function(e){
 // from the popup
 $("#popupSelectM").change(function(e) {
     console.log("Measurement file CHANGED");
-    window.fileSelection = $("#popupSelectM").val();
-    mFileName = window.fileSelection;
+    mFileName = $("#popupSelectM").val();
     // Now we have a file selected
     $("#selectMeasurementsDiv").hide();
     $.getJSON(mFileName, function(mdata) {
 	// Now we have measurement data
 	window.measurementData = mdata
-	// If we already have a pattern script loaded, 
-	// then call into it
-	if(typeof drawPattern == 'function')
-	{
-	    // The funtion drawPattern exists
-	    drawPattern(window.measurementData);
-	}
+
+	// See whether we're ready to draw
+	drawPatternIfReady();
     });
 });
 
@@ -103,11 +127,8 @@ $("#popupSelectP").change(function(e) {
     // Save the file name that we loaded
     window.scriptSelection = pFileName;
 
-    // At this point, the new script is loaded, we can
-    // call into it if we have measurements loaded
-    if (typeof window.measurementData != 'undefined') {
-	drawPattern(window.measurementData);
-    }
+    // See whether we're ready to draw
+    drawPatternIfReady();
 });
 
 function getPattern(){
