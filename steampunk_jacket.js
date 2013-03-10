@@ -517,10 +517,8 @@ function rightPoint(pnt, length) {
 
 // ------- drawn canvas points -------
 
-function patternPoint(group, pname, pnt, svg_cmd) {
-    var p = new fabric.Circle({
-	left: pnt.left,
-	top: pnt.top,
+function patternPoint( group, pname, pnt, svg_cmd) {  
+    var p = new fabric.Circle( {
 	strokeWidth: 1,
 	radius: 5,
 	fill: 'red',
@@ -530,27 +528,27 @@ function patternPoint(group, pname, pnt, svg_cmd) {
 	lockUniScaling: true,
 	name: pname,
 	selectable: true,
-	reference: true,
-	coords: pnt.left +', '+  pnt.top,
-	cmd: svg_cmd
+	reference: true
     });
-    var ptext = new fabric.Text(pname, {
-	fontSize: 10,
+    var ptext = new fabric.Text( pname, {
+	fontSize: 9
+    });    
+    var pgroup = new fabric.Group( [ptext, p], {
 	left: pnt.left,
-	top: pnt.top - 9,
+	top: pnt.top,	
 	hasBorders: false,
 	hasControls: false,
 	lockUniScaling: true,
-	selectable: true,
-	reference: true,      
-    });    
-    canvas.add(p);
-    return p;
-} // patternPointXY()
+	coords: pnt.left  +', '+  pnt.top,
+	cmd: svg_cmd,	
+    });
+    canvas.add(pgroup);
+    return pgroup;
+} // patternPoint()
 
 function patternPointXY(group, pname, left, top, svg_cmd) {
     return patternPoint(group, pname, point(left, top), svg_cmd ); 
-} //patternPoint()
+} //patternPointXY()
 
 
 function controlPoint(pname, pnt) {
