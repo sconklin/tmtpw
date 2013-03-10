@@ -25,21 +25,27 @@ function drawPattern(mydata) {
 	    "stroke": "red",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "4"
+	    "stroke-width": "4",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"buttonhole_style": {
 	    "fill": "none",
 	    "stroke": "green",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "3"
+	    "stroke-width": "3",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"cuttingline_style": {
 	    "fill": "none",
 	    "stroke": "green",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "4"
+	    "stroke-width": "4",
+	    "hasBorders": false,
+	    "hasControls": false
 	},
 	"dartline_style": {
 	    "fill": "none",
@@ -48,7 +54,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "3",
 	    "stroke-dasharray": "6,6",
-	    "stroke-dashoffset": "0"
+	    "stroke-dashoffset": "0",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"default_textblock_text_style": {
 	    "fill": "#000000",
@@ -77,14 +85,18 @@ function drawPattern(mydata) {
 	    "stroke": "darkgreen",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "6"
+	    "stroke-width": "6",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"grainline_style": {
 	    "fill": "none",
 	    "stroke": "green",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "4"
+	    "stroke-width": "4",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"gridline_style": {
 	    "fill": "none",
@@ -93,7 +105,9 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "2",
 	    "stroke-dasharray": "6,6",
-	    "stroke-dashoffset": "0"
+	    "stroke-dashoffset": "0",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"hemline_style": {
 	    "fill": "none",
@@ -102,21 +116,27 @@ function drawPattern(mydata) {
 	    "stroke-miterlimit": "4",
 	    "stroke-width": "3",
 	    "stroke-dasharray": "6,6",
-	    "stroke-dashoffset": "0"
+	    "stroke-dashoffset": "0",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"line_style": {
 	    "fill": "none",
 	    "stroke": "pink",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "4"
+	    "stroke-width": "4",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"markingline_style": {
 	    "fill": "none",
 	    "stroke": "lightgreen",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "5"
+	    "stroke-width": "5",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"placement_style": {
 	    "fill": "none",
@@ -130,19 +150,25 @@ function drawPattern(mydata) {
 	"point_style": {
 	    "fill": "red",
 	    "stroke": "red",
-	    "stroke-width": "1"
+	    "stroke-width": "1",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"controlpoint_style": {
 	    "fill": "none",
 	    "stroke": "gray",
-	    "stroke-width": "1"
+	    "stroke-width": "1",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"circle_style": {
 	    "fill": "none",
 	    "stroke": "green",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "4"
+	    "stroke-width": "4",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"point_text_style": {
 	    "fill": "darkblue",
@@ -153,7 +179,9 @@ function drawPattern(mydata) {
 	    "stroke": "none",
 	    "text-align": "right",
 	    "text-anchor": "right",
-	    "vertical-align": "top"
+	    "vertical-align": "top",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"control_point_text_style": {
 	    "fill": "gray",
@@ -164,7 +192,9 @@ function drawPattern(mydata) {
 	    "stroke": "none",
 	    "text-align": "right",
 	    "text-anchor": "right",
-	    "vertical-align": "top"
+	    "vertical-align": "top",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"reference_path_style": {
 	    "fill": "none",
@@ -173,7 +203,9 @@ function drawPattern(mydata) {
 	    "stroke-dashoffset": "0",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "2"
+	    "stroke-width": "2",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"seamline_style": {
 	    "fill": "none",
@@ -182,7 +214,9 @@ function drawPattern(mydata) {
 	    "stroke-dashoffset": "0",
 	    "stroke-linejoin": "miter",
 	    "stroke-miterlimit": "4",
-	    "stroke-width": "4"
+	    "stroke-width": "4",
+	    "hasBorders": false,
+	    "hasControls": false	    
 	},
 	"textblock_box_style": {
 	    "fill": "none",
