@@ -353,31 +353,31 @@ function drawPattern(mydata) {
     //pattern formulas
     var scale = bust_circumference/2.0;
 
-    var a1 = patternPointXY('a1', BORDER, BORDER, 'M'); //nape
-    var a2 = patternPoint('a2', downPoint(a1, 7.5*CM), 'L'); //back shoulder center
-    var a3 = patternPoint('a3', downPoint(a1, back_underarm_height), 'L'); //back underarm height
-    var a4 = patternPoint('a4', downPoint(a1, back_waist_length), 'L'); //back waist height
-    var a5 = patternPoint('a5', downPoint(a4, back_hip_length), 'L'); //back hip height
-    var a6 = patternPoint('a6', downPoint(a5, (0.75) * back_hip_length), 'L') //back hem height
-    var a7 = patternPoint('a7', rightPoint(a1, across_back/2.0), 'L'); // across_back width at nape height
-    var a8 = patternPoint('a8', point(a7.left, a6.top),'L'); // across_back width at hip height 
-    var a9 = patternPoint('a9', point(a7.left, a2.top),'L'); // across_back width at ? height
-    var a10 = patternPoint('a10', point(a7.left, a3.top),'L'); //across_back width at ? height
-    var a11 = patternPoint('a11', point(a7.left, a4.top),'L'); //across_back width at waist height
-    var a12 = patternPoint('a12', point(a7.left, a5.top),'L'); //across_back width at hip height
-    var a13 = patternPoint('a13', rightPoint(a3, 1 * CM),'L'); //back underarm center
-    var a14 = patternPoint('a14', rightPoint(a4, 2.5 * CM),'L' ); //back waist center
-    var a15 = patternPoint('a15', rightPoint(a5, 2 * CM),'L'); //back hip center
-    var a16 = patternPoint('a16', rightPoint(a6, 1.5 * CM),'L'); //back hem center
-    var a17 = patternPoint('a17', rightPoint(a1, (scale/8.0) + 2 * CM),'L'); //temp point
-    var a18 = patternPoint('a18', upPoint(a17, 2 * CM),''); //back neck side 
-    var a19 = patternPoint('a19', rightPoint(a9, 1 * CM),'L'); //back shoulder tip
-    var a20 = patternPoint('a20', upPoint(a10, scale/8.0),'L'); //back armscye point
-    var a21 = patternPoint('a21', upPoint(a10, scale/4.0),'L'); //back sleeve balance point
-    var a22 = patternPoint('a22', leftPoint(a10, 1 * CM),'L'); //back underarm side
-    var a23 = patternPoint('a23', leftPoint(a11, 3 * CM),'L'); //back waist side
-    var a24 = patternPoint('a24', leftPoint(a12, 2 * CM),'L'); //back hip side
-    var a25 = patternPoint('a25', leftPoint(a8, 1.5 * CM),'L'); //back hem side
+    var a1 = patternPointXY(A, 'a1', BORDER, BORDER, 'M'); //nape
+    var a2 = patternPoint(A, 'a2', downPoint(a1, 7.5*CM), 'L'); //back shoulder center
+    var a3 = patternPoint(A, 'a3', downPoint(a1, back_underarm_height), 'L'); //back underarm height
+    var a4 = patternPoint(A, 'a4', downPoint(a1, back_waist_length), 'L'); //back waist height
+    var a5 = patternPoint(A, 'a5', downPoint(a4, back_hip_length), 'L'); //back hip height
+    var a6 = patternPoint(A, 'a6', downPoint(a5, (0.75) * back_hip_length), 'L') //back hem height
+    var a7 = patternPoint(A, 'a7', rightPoint(a1, across_back/2.0), 'L'); // across_back width at nape height
+    var a8 = patternPoint(A, 'a8', point(a7.left, a6.top),'L'); // across_back width at hip height 
+    var a9 = patternPoint(A, 'a9', point(a7.left, a2.top),'L'); // across_back width at ? height
+    var a10 = patternPoint(A, 'a10', point(a7.left, a3.top),'L'); //across_back width at ? height
+    var a11 = patternPoint(A, 'a11', point(a7.left, a4.top),'L'); //across_back width at waist height
+    var a12 = patternPoint(A, 'a12', point(a7.left, a5.top),'L'); //across_back width at hip height
+    var a13 = patternPoint(A, 'a13', rightPoint(a3, 1 * CM),'L'); //back underarm center
+    var a14 = patternPoint(A, 'a14', rightPoint(a4, 2.5 * CM),'L' ); //back waist center
+    var a15 = patternPoint(A, 'a15', rightPoint(a5, 2 * CM),'L'); //back hip center
+    var a16 = patternPoint(A, 'a16', rightPoint(a6, 1.5 * CM),'L'); //back hem center
+    var a17 = patternPoint(A, 'a17', rightPoint(a1, (scale/8.0) + 2 * CM),'L'); //temp point
+    var a18 = patternPoint(A, 'a18', upPoint(a17, 2 * CM),''); //back neck side 
+    var a19 = patternPoint(A, 'a19', rightPoint(a9, 1 * CM),'L'); //back shoulder tip
+    var a20 = patternPoint(A, 'a20', upPoint(a10, scale/8.0),'L'); //back armscye point
+    var a21 = patternPoint(A, 'a21', upPoint(a10, scale/4.0),'L'); //back sleeve balance point
+    var a22 = patternPoint(A, 'a22', leftPoint(a10, 1 * CM),'L'); //back underarm side
+    var a23 = patternPoint(A, 'a23', leftPoint(a11, 3 * CM),'L'); //back waist side
+    var a24 = patternPoint(A, 'a24', leftPoint(a12, 2 * CM),'L'); //back hip side
+    var a25 = patternPoint(A, 'a25', leftPoint(a8, 1.5 * CM),'L'); //back hem side
 
 
     displayPoints(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25);
@@ -389,18 +389,20 @@ function drawPattern(mydata) {
     //canvas.add(curve_a);
     //gridlines
     var path_str = formatPath('M', a1, 'L', a6, 'L', a8, 'L', a7, 'z');
-    var gridline = new fabric.Path(path_str, styles.gridline_style);
-    canvas.add(gridline);
+    var Agridline = new fabric.Path(path_str, styles.gridline_style);
+    canvas.add(Agridline);
     //seamlines
     path_str = formatPath('M', a1, 'L', a2, 'L', a13, 'L', a14, 'L', a15, 'L', a16, 'L', a25);
     path_str += formatPath( ' L', a24, 'L', a23, 'L', a22, 'L', a20, 'L', a21, 'L', a19, 'L', a18, 'Q', a17, a1, 'z');
-    var seamline = new fabric.Path(path_str, styles.seamline_style);
-    canvas.add(seamline);
+    var Aseamline = new fabric.Path(path_str, styles.seamline_style);
+    canvas.add(Aseamline);
     //cuttinglines
-    cuttingline = new fabric.Path(path_str, styles.cuttingline_style);
-    canvas.add(cuttingline);
-
-
+    Acuttingline = new fabric.Path(path_str, styles.cuttingline_style);
+    canvas.add(Acuttingline);
+    Aseamline.sendToBack(); //seamline under points
+    Acuttingline.sendToBack(); //cuttingline under seamline
+    Agridline.sendToBack(); //gridline under cuttingline
+    
 }; //drawPattern()
 
 // ------- debug utils -------
@@ -442,9 +444,13 @@ function rightPoint(pnt, length) {
     return point(pnt.left + length, pnt.top);
 } // downPoint()     
 
+
+// ------- text & labels -------
+
+
 // ------- drawn canvas points -------
 
-function patternPoint(pname, pnt, svg_cmd) {
+function patternPoint(group, pname, pnt, svg_cmd) {
     var c = new fabric.Circle({
 	left: pnt.left,
 	top: pnt.top,
@@ -460,12 +466,13 @@ function patternPoint(pname, pnt, svg_cmd) {
     });
 
     c.hasBorders = c.hasControls = false;
+    group.add(c);
     canvas.add(c);   
     return c;
 } // patternPointXY()
 
-function patternPointXY(pname, left, top, svg_cmd) {
-    return patternPoint(pname, point(left, top), svg_cmd ); 
+function patternPointXY(group, pname, left, top, svg_cmd) {
+    return patternPoint(group, pname, point(left, top), svg_cmd ); 
 } //patternPoint()
 
 
