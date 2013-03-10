@@ -458,6 +458,8 @@ function patternPoint(group, pname, pnt, svg_cmd) {
 	radius: 5,
 	fill: 'red',
 	stroke: 'red',
+	hasBorders: false,
+	hasControls: false,
 	name: pname,
 	selectable: true,
 	reference: true,
@@ -465,7 +467,6 @@ function patternPoint(group, pname, pnt, svg_cmd) {
 	cmd: svg_cmd
     });
 
-    c.hasBorders = c.hasControls = false;
     group.add(c);
     canvas.add(c);   
     return c;
@@ -484,11 +485,12 @@ function controlPoint(pname, pnt) {
 	radius: 5,
 	fill: 'none',
 	stroke: 'gray',
+	hasBorders: false,
+	hasControls: false,
 	name: pname,
 	reference: 'true',
 	coords: pnt.left +', '+ pnt.top
     }); 
-    c.hasBorders = c.hasControls = false;
     canvas.add(c);
     return c;
 } // controlPoint()
