@@ -138,6 +138,30 @@ function distance(p1, p2) {
     return Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 0.5);
 } // distance()
 
+// ------- measurement data load -------
+
+function convertMeasurementData(mdata){
+
+    if (mdata.measureunit.value === 'cm') {
+        var munit = CM;
+    } else {
+        var munit = IN;
+    }
+
+    var md = {};
+    // convert measurement data and return it in a more handy array
+    $.each(mdata, function(key, val) {
+	if (val.type == "float"){
+	    md[key] = (parseFloat(val.value) * munit);
+	    //console.log("set " + key + " to " + parseFloat(val.value) * munit);
+	} else {
+	    md[key] = val.value;
+	    //console.log("set " + key + " to " + val.value);
+	}
+    });
+    return md
+}
+
 // ------- global constants -------
 
 //TODO:  replace with zoom button on canvas

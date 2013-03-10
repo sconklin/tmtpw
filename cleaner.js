@@ -15,7 +15,8 @@ function drawPatternIfReady(){
 	// do any setup work here for the canvas (none yet)
 
 	// Draw the pattern
-	drawPattern(window.measurementData, window.styleData);
+	var mmap = convertMeasurementData(window.measurementData);
+	drawPattern(window.measurementData, window.styleData, mmap);
     }
 }
 
