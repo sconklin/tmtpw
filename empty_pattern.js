@@ -1,3 +1,3 @@
 function drawPattern(mydata) {
-    alert("drawPattern Called");
+    alert("emptypattern drawPattern Called");
 }

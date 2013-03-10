@@ -1,21 +1,16 @@
-var MeasurementsButton = document.getElementById("SMButton");
-var PatternButton = document.getElementById("SPButton");
-var haveMeasurements = false;
-var havePattern = false;
-
 // Turn off caching, or changes to json files, etc
 // won't get reloaded
 $.ajaxSetup({ cache: false });
 
-// catch the event on the measurements button
-MeasurementsButton.addEventListener("click", function(e){
+// catch the click on the measurements button
+$("#SMButton").click(function(e){
     e.preventDefault();
     console.log("MButton");
     getMeasurement();
 });
 
-// catch the event on the patterns button
-PatternButton.addEventListener("click", function(e){
+// catch the click on the patterns button
+$("#SPButton").click(function(e){
     e.preventDefault();
     console.log("PButton");
     getPattern();
@@ -27,7 +22,6 @@ $("#popupSelectM").change(function(e) {
     console.log("Measurement file CHANGED");
     window.fileSelection = $("#popupSelectM").val();
     mFileName = window.fileSelection;
-    console.log(mFileName);
     // Now we have a file selected
     $("#selectMeasurementsDiv").hide();
     $.getJSON(mFileName, function(mdata) {
@@ -40,8 +34,6 @@ $("#popupSelectM").change(function(e) {
 	    // The funtion drawPattern exists
 	    drawPattern(window.measurementData);
 	}
- 	
-	console.log(mdata);
     });
 });
 
@@ -50,11 +42,6 @@ function getMeasurement(){
     // Right now this grabs a list from a json file,
     // but could ultimately query a db
     $.getJSON("measurement_list.json", function(mlist) {
-
-	// Now we have a list of files, let the user select one
-	//for (var i=0, len=mlist.length; i < len; i++) {
-        //    console.log(mlist[i]);
-	//}
 
 	// we'll set up the select list, then display the popup
 	// that contains it
@@ -79,54 +66,48 @@ function getMeasurement(){
     });
 }
 
+function createJsFile(filename){
+    var fileref=document.createElement('script')
+    fileref.setAttribute("type","text/javascript")
+    fileref.setAttribute("src", filename)
+    return fileref
+}
+
+function replaceJsFile(oldfilename, newfilename){
+    var allsuspects=document.getElementsByTagName("script")
+    for (var i=allsuspects.length; i>=0; i--){ //search backwards within nodelist for matching elements to remove
+	if (allsuspects[i] && allsuspects[i].getAttribute("src")!=null && allsuspects[i].getAttribute("src").indexOf(oldfilename)!=-1){
+	    var newelement=createJsFile(newfilename)
+	    allsuspects[i].parentNode.replaceChild(newelement, allsuspects[i])
+	}
+    }
+}
+
 // Triggered when the user selects a pattern file
 // from the popup
 $("#popupSelectP").change(function(e) {
     console.log("Pattern file CHANGED");
-    window.scriptSelection = $("#popupSelectP").val();
-    pFileName = window.scriptSelection;
-    console.log(pFileName);
-    // Now we have a file selected
+    pFileName = $("#popupSelectP").val();
+    // Now we have a file selected, so hide the selection popup
     $("#selectPatternDiv").hide();
-    // Now, load the script, and call it if we have measurements
-    console.log("about to get script");
 
+    if(typeof drawPattern == 'function')
+    {
+	// The funtion drawPattern exists, indicating that we previously loaded a pattern script
+	// So we replace the old one with the new one
+	replaceJsFile(window.scriptSelection, pFileName);
+    } else {
+	el = createJsFile(pFileName);
+	$('body').append(el);
+    }
+    // Save the file name that we loaded
+    window.scriptSelection = pFileName;
 
-    var jqxhr = $.get(pFileName, function(scriptText) {
-	console.log("Got Script");
-	console.log(scriptText);
-	var $scriptEl = $("#patternScript");
-	//$scriptEl.empty(); // First, empty the pattern script element
-	$scriptEl.replaceWith(scriptText); // First, empty the pattern script element
-	// Now, see if we have measurements loaded, and if we do, call the pattern function
-	if (typeof window.measurementData != 'undefined') {
-	    drawPattern(window.measurementData);
-	}
-    }, "script")
-	.fail(function(data, status, xhf) {
-	    console.log(status);
-	    // TODO add test for parsetest vs other errors
-	    alert("Failed to load file");
-	});
-
-/*
-    $.get(pFileName, "script")
-	.done(function(scriptText, status, xhr) {
-	    console.log("Got Script");
-	    console.log(scriptText);
-	    var $scriptEl = $("#patternScript");
-	    //$scriptEl.empty(); // First, empty the pattern script element
-	    $scriptEl.replaceWith(scriptText); // First, empty the pattern script element
-	    // Now, see if we have measurements loaded, and if we do, call the pattern function
-	    console.log("about to call script");
-	    if (typeof window.measurementData != 'undefined') {
-		drawPattern(window.measurementData);
-	    });
-	 .fail(function(scriptText, status, xhr) {
-	 });
-	  .always(function(scriptText, status, xhr) {
-	  });
-*/
+    // At this point, the new script is loaded, we can
+    // call into it if we have measurements loaded
+    if (typeof window.measurementData != 'undefined') {
+	drawPattern(window.measurementData);
+    }
 });
 
 function getPattern(){
@@ -134,11 +115,6 @@ function getPattern(){
     // Right now this grabs a list from a json file,
     // but could ultimately query a db
     $.getJSON("pattern_list.json", function(plist) {
-
-	// Now we have a list of patterns, let the user select one
-	//for (var i=0, len=plist.length; i < len; i++) {
-        //    console.log(plist[i]);
-	//}
 
 	// we'll set up the select list, then display the popup
 	// that contains it
