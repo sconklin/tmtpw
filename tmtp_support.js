@@ -55,6 +55,7 @@ function rightPoint(pnt, length) {
 
 function patternPoint(group, pname, pnt, svg_cmd) {
     var p = new fabric.Circle({
+        name: pname + '_point',
         strokeWidth: 1,
         radius: 5,
         fill: 'red',
@@ -67,9 +68,11 @@ function patternPoint(group, pname, pnt, svg_cmd) {
         reference: true
     });
     var ptext = new fabric.Text(pname, {
+        name: pname + '_text',
         fontSize: 9
     });
     var pgroup = new fabric.Group([ptext, p], {
+        name: pname,
         left: pnt.left,
         top: pnt.top,
         hasBorders: false,
@@ -151,13 +154,13 @@ function convertMeasurementData(mdata){
     var md = {};
     // convert measurement data and return it in a more handy array
     $.each(mdata, function(key, val) {
-	if (val.type == "float"){
-	    md[key] = (parseFloat(val.value) * munit);
-	    //console.log("set " + key + " to " + parseFloat(val.value) * munit);
-	} else {
-	    md[key] = val.value;
-	    //console.log("set " + key + " to " + val.value);
-	}
+    if (val.type == "float"){
+        md[key] = (parseFloat(val.value) * munit);
+        //console.log("set " + key + " to " + parseFloat(val.value) * munit);
+    } else {
+        md[key] = val.value;
+        //console.log("set " + key + " to " + val.value);
+    }
     });
     return md
 }
