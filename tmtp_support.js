@@ -1,11 +1,16 @@
 // -------define the canvas
 var canvas = new fabric.Canvas('c');
 
-// -------calculate points, draw pattern paths, link points & paths for animation
+// ------- angles
 function angleOfDegree(degree) {
     //Accepts degrees, returns radians
     return degree * Math.PI / 180.0;
 } //angleOfDegree()
+
+function angleOfLine(p1, p2) {
+    // Accepts points p1 & p2. Returns the angle of the vector between them. Uses atan2.
+    return Math.atan2(p2.top - p1.top, p2.left - p1.left);
+}
 
 // ------- debug utils -------
 
@@ -28,6 +33,7 @@ function point(left, top) {
         top: top,
         coords: left + ', ' + top
     });
+    console.log('new point ' + c.left + ' ' + c.top);
     return c;
 } // point()
 
@@ -138,8 +144,21 @@ function formatPath(string) {
 
 function distance(p1, p2) {
     //Accepts two points p1 & p2. Returns the distance between p1 & p2
-    return Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 0.5);
+    //Accepts two points p1 & p2. Returns the distance between p1 & p2
+    return Math.sqrt(((p2.left - p1.left) * (p2.left - p1.left)) + ((p2.top - p1.top) * (p2.top - p1.top)));
 } // distance()
+
+// ------- intersections -------
+
+function pointOnLineAtLength(p1, p2, length) {
+    //Accepts points p1 and p2, length
+    //Returns point on the line at length measured from p1 towards p2
+    //If length is negative, will return p3 at length measured from p1 in opposite direction from p2
+    var lineangle = angleOfLine(p1, p2);
+    var pleft = (length * Math.cos(lineangle)) + p1.left;
+    var ptop  = (length * Math.sin(lineangle)) + p1.top;
+    return point(pleft, ptop);
+}
 
 // ------- measurement data load -------
 
