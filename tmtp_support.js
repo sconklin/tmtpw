@@ -33,7 +33,6 @@ function point(left, top) {
         top: top,
         coords: left + ', ' + top
     });
-    console.log('new point ' + c.left + ' ' + c.top);
     return c;
 } // point()
 
@@ -134,7 +133,6 @@ function formatPath(string) {
         }
         i += 1;
     }
-    console.log('path_str = ' + path_str);
     return path_str.trim(); //return path_str with leading & trailing whitespace removed
 } //formatPath()
 
