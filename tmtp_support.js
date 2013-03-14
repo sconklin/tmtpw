@@ -1,7 +1,7 @@
 // -------define the canvas
 var canvas = new fabric.Canvas('c');
 
-// ------- angles
+// ------- angle and slope -------
 function angleOfDegree(degree) {
     //Accepts degrees, returns radians
     return degree * Math.PI / 180.0;
@@ -10,6 +10,18 @@ function angleOfDegree(degree) {
 function angleOfLine(p1, p2) {
     // Accepts points p1 & p2. Returns the angle of the vector between them. Uses atan2.
     return Math.atan2(p2.top - p1.top, p2.left - p1.left);
+}
+
+function slopeOfLine(p1, p2) {
+    //Accepts two point objects and returns the slope
+    if ((p2.left - p1.left) != 0) {
+        var m = (p2.top - p1.top) / (p2.left - p1.left);
+    } else {
+        //TODO: better error handling here
+        console.log('Vertical Line in slopeOfLine');
+        var m = None;
+    }
+    return m;
 }
 
 // ------- debug utils -------
@@ -26,6 +38,7 @@ function displayPoints(string) {
 } //displayPoints()
 
 // ------- undrawn locations -------
+
 
 function point(left, top) {
     var c = new fabric.Object({
@@ -52,18 +65,118 @@ function rightPoint(pnt, length) {
     return point(pnt.left + length, pnt.top);
 } // downPoint()
 
+function midPoint(p1, p2) {
+    //Accepts points p1 & p2. Returns point as midpoint b/w p1 & p2
+    return point((p1.left + p2.left) / 2.0, (p1.top + p2.top) / 2.0);
+}
+
+function polarPoint(p1, length, angle) {
+    //Adapted from http://www.teacherschoice.com.au/maths_library/coordinates/polar_-_rectangular_conversion.htm
+    //Accepts p1 as type Point,length as float,angle as float. angle is in radians
+    //Returns p2 as type Point, calculated at length and angle from p1,
+    //Angles start at position 3:00 and move clockwise
+    var r = length;
+    var pleft = p1.left + (r * Math.cos(angle));
+    var ptop = p1.top + (r * Math.sin(angle));
+    return point(pleft, ptop);
+}
 
 // ------- text & labels -------
 
 
 // ------- drawn canvas points -------
+function newPoint(name, pnt) {
+    var p = new fabric.Point(pnt.x, pnt.y);
+    p.name = name;
+    p.coords = pnt.x + ', ' + pnt.y;
+    return p;
+} // newPoint()
+
+function newPointXY(name, x, y) {
+    var p = new fabric.Point(x, y);
+    p.coords = x + ', ' + y;
+    p.name = name;
+    return p;
+} // newPointXY()
+
+function newPatternPoint(pnt, in_lines, out_lines) {
+    var p = new fabric.Circle({
+        name: pnt.name,
+        left: pnt.x,
+        top: pnt.y,
+        strokeWidth: 1,
+        radius: 5,
+        fill: 'none',
+        stroke: 'red',
+        hasBorders: false,
+        hasControls: false,
+        lockUniScaling: true,
+        selectable: true,
+        reference: true
+    });
+    p.inline = [];
+    i = 0;
+    for (item in in_lines) {
+        p.inline[i] = in_lines[i];
+        i += 1;
+    }
+    p.outline = [];
+    i = 0;
+    for (item in out_lines) {
+        p.outline[i] = out_lines[i];
+        i += 1;
+    }
+    canvas.add(p);
+    return p;
+} // patternPoint()
+
+function newPatternPointXY(group, pname, left, top, previous_pnt, svg_cmd, start) {
+    return newPatternPoint(group, pname, point(left, top), previous_pnt, svg_cmd, start);
+} //patternPointXY()
+
+function newControlPoint(group, cname, pnt, parent_pnt) {
+    var c = new fabric.Circle({
+        name: cname,
+        strokeWidth: 1,
+        radius: 5,
+        fill: 'none',
+        stroke: 'gray',
+        hasBorders: false,
+        hasControls: false,
+        lockUniScaling: true,
+        reference: 'true',
+        coords: pnt.left + ', ' + pnt.top,
+        parent: parent_pnt
+    });
+    var ctext = new fabric.Text(cname, {
+        name: cname + '_text',
+        fontSize: 9
+    });
+    var cgroup = new fabric.Group([ctext, c], {
+        name: cname + "_group",
+        left: pnt.left,
+        top: pnt.top,
+        hasBorders: false,
+        hasControls: false,
+        lockUniScaling: true,
+        coords: pnt.left  + ', ' +  pnt.top,
+    });
+    group.points.push(c);
+    console.log(group);
+    canvas.add(cgroup);
+    return cgroup;
+} // controlPoint()
+
+function newControlPointXY(pname, left, top, parent_pnt) {
+    return newControlPointXY(pname, point(left, top), parent_pnt);
+} //controlPoint()
 
 function patternPoint(group, pname, pnt, svg_cmd) {
     var p = new fabric.Circle({
         name: pname + '_point',
         strokeWidth: 1,
         radius: 5,
-        fill: 'red',
+        fill: 'none',
         stroke: 'red',
         hasBorders: false,
         hasControls: false,
@@ -127,12 +240,18 @@ function formatPath(string) {
     while (i < args.length) {
         arg = args[i];
         if (typeof arg === "string") {
-            path_str += " " + arg;
+            if (path_str === "") {
+                //1st item in the path string
+                path_str = arg;
+            } else {
+                path_str += " " + arg;
+            }
         } else {
-            path_str += ' ' + arg.left + ', ' + arg.top;
+            path_str += " " + arg.coords;
         }
         i += 1;
     }
+    console.log(path_str);
     return path_str.trim(); //return path_str with leading & trailing whitespace removed
 } //formatPath()
 
@@ -156,6 +275,47 @@ function pointOnLineAtLength(p1, p2, length) {
     var pleft = (length * Math.cos(lineangle)) + p1.left;
     var ptop  = (length * Math.sin(lineangle)) + p1.top;
     return point(pleft, ptop);
+}
+
+function intersectLines(p1, p2, p3, p4) {
+    //Find intersection between two lines. Accepts p1,p2,p3,p4 as class Point. Returns p5 as class Point
+    //Intersection does not have to be within the supplied line segments
+    console.log('   intersectLines:     p3 = '+p3.left+', '+p3.top);
+    console.log('                       p4 = '+p4.left+', '+p4.top);
+    var x = 0.0;
+    var y = 0.0;
+    if (p1.left === p2.left) {
+        //if 1st line vertical,use slope of 2nd line
+        x = p1.left;
+        m2 = slopeOfLine(p3, p4);
+        b2 = p3.top - m2 * p3.left;
+        y = m2 * x + b2;
+    } else if (p3.left === p4.left) {
+        //if 2nd line vertical, use slope of 1st line
+        x = p3.left;
+        m1 = slopeOfLine(p1, p2);
+        b1 = p1.top - m1 * p1.left;
+        y = m1 * x + b1;
+    } else {
+        //otherwise use ratio of difference between points
+        m1 = (p2.top - p1.top) / (p2.left - p1.left);
+        m2 = (p4.top - p3.top) / (p4.left - p3.left);
+        b1 = p1.top - m1 * p1.left;
+        b2 = p3.top - m2 * p3.left;
+        //if (abs(b1 - b2) < 0.01) && (m1 === m2) {
+        //    x = p1.left;
+        //} else {
+        //    x=(b2-b1)/(m1-m2);
+        //}
+        if (m1 === m2) {
+            //TODO: better error handling here
+            console.log('***** Parallel lines in intersectLines *****');
+        } else {
+            x = (b2 - b1) / (m1 - m2);
+            y = (m1 * x) + b1; // arbitrary choice,could have used m2 & b2
+        }
+    }
+    return point(x, y);
 }
 
 // ------- measurement data load -------
