@@ -10,23 +10,23 @@ function drawPatternIfReady(){
     // Are measurements loaded?
     // Is a pattern Script Loaded?
     if ((window.styleData != 'undefined') &&
-	(typeof window.measurementData != 'undefined') &&
-	(typeof drawPattern == 'function')){
-	// do any setup work here for the canvas (none yet)
+    (typeof window.measurementData != 'undefined') &&
+    (typeof drawPattern == 'function')){
+    // do any setup work here for the canvas (none yet)
 
-	// Draw the pattern
-	var mmap = convertMeasurementData(window.measurementData);
-	drawPattern(window.measurementData, window.styleData, mmap);
+    // Draw the pattern
+    var mmap = convertMeasurementData(window.measurementData);
+    drawPattern(window.measurementData, window.styleData, mmap);
     }
 }
 
 function loadStyles(styleFileName){
     $.getJSON(styleFileName, function(sdata) {
-	// Now we have measurement data
-	window.styleData = sdata
+    // Now we have measurement data
+    window.styleData = sdata
 
-	// See whether we're ready to draw
-	drawPatternIfReady();
+    // See whether we're ready to draw
+    drawPatternIfReady();
     });
 }
 
@@ -54,11 +54,11 @@ $("#popupSelectM").change(function(e) {
     // Now we have a file selected
     $("#selectMeasurementsDiv").hide();
     $.getJSON(mFileName, function(mdata) {
-	// Now we have measurement data
-	window.measurementData = mdata
+    // Now we have measurement data
+    window.measurementData = mdata
 
-	// See whether we're ready to draw
-	drawPatternIfReady();
+    // See whether we're ready to draw
+    drawPatternIfReady();
     });
 });
 
@@ -68,26 +68,26 @@ function getMeasurement(){
     // but could ultimately query a db
     $.getJSON("measurement_list.json", function(mlist) {
 
-	// we'll set up the select list, then display the popup
-	// that contains it
-	var $el = $("#popupSelectM");
-	$el.empty(); // remove old options from the select
+    // we'll set up the select list, then display the popup
+    // that contains it
+    var $el = $("#popupSelectM");
+    $el.empty(); // remove old options from the select
 
-	// Add the first prompt. Selecting this one will not trigger
-	// a change, since it is selected already
-	$el.append($("<option></option>")
-		   .attr("value", "select").text("Select Measurements"));
+    // Add the first prompt. Selecting this one will not trigger
+    // a change, since it is selected already
+    $el.append($("<option></option>")
+           .attr("value", "select").text("Select Measurements"));
 
-	// Add the choices we read from the json file
-	$.each(mlist, function(key, val) {
-	    // remove the .json from the end
-	    var name = val.slice(0,-5);
-	    // Add the option to the list
-	    $el.append($("<option></option>")
-		       .attr("value", val).text(name));
-	});
-	$("#selectMeasurementsDiv").show();
-	// Now, when user selects one of these the change callback will happen
+    // Add the choices we read from the json file
+    $.each(mlist, function(key, val) {
+        // remove the .json from the end
+        var name = val.slice(0,-5);
+        // Add the option to the list
+        $el.append($("<option></option>")
+               .attr("value", val).text(name));
+    });
+    $("#selectMeasurementsDiv").show();
+    // Now, when user selects one of these the change callback will happen
     });
 }
 
@@ -101,10 +101,10 @@ function createJsFile(filename){
 function replaceJsFile(oldfilename, newfilename){
     var allsuspects=document.getElementsByTagName("script")
     for (var i=allsuspects.length; i>=0; i--){ //search backwards within nodelist for matching elements to remove
-	if (allsuspects[i] && allsuspects[i].getAttribute("src")!=null && allsuspects[i].getAttribute("src").indexOf(oldfilename)!=-1){
-	    var newelement=createJsFile(newfilename)
-	    allsuspects[i].parentNode.replaceChild(newelement, allsuspects[i])
-	}
+    if (allsuspects[i] && allsuspects[i].getAttribute("src")!=null && allsuspects[i].getAttribute("src").indexOf(oldfilename)!=-1){
+        var newelement=createJsFile(newfilename)
+        allsuspects[i].parentNode.replaceChild(newelement, allsuspects[i])
+    }
     }
 }
 
@@ -118,12 +118,12 @@ $("#popupSelectP").change(function(e) {
 
     if(typeof drawPattern == 'function')
     {
-	// The funtion drawPattern exists, indicating that we previously loaded a pattern script
-	// So we replace the old one with the new one
-	replaceJsFile(window.scriptSelection, pFileName);
+    // The funtion drawPattern exists, indicating that we previously loaded a pattern script
+    // So we replace the old one with the new one
+    replaceJsFile(window.scriptSelection, pFileName);
     } else {
-	el = createJsFile(pFileName);
-	$('body').append(el);
+    el = createJsFile(pFileName);
+    $('body').append(el);
     }
     // Save the file name that we loaded
     window.scriptSelection = pFileName;
@@ -138,25 +138,25 @@ function getPattern(){
     // but could ultimately query a db
     $.getJSON("pattern_list.json", function(plist) {
 
-	// we'll set up the select list, then display the popup
-	// that contains it
-	var $el = $("#popupSelectP");
-	$el.empty(); // remove old options from the select
+    // we'll set up the select list, then display the popup
+    // that contains it
+    var $el = $("#popupSelectP");
+    $el.empty(); // remove old options from the select
 
-	// Add the first prompt. Selecting this one will not trigger
-	// a change, since it is selected already
-	$el.append($("<option></option>")
-		   .attr("value", "select").text("Select Pattern"));
+    // Add the first prompt. Selecting this one will not trigger
+    // a change, since it is selected already
+    $el.append($("<option></option>")
+           .attr("value", "select").text("Select Pattern"));
 
-	// Add the choices we read from the json file
-	$.each(plist, function(key, val) {
-	    // remove the .js from the end
-	    var name = val.slice(0,-3);
-	    // Add the option to the list
-	    $el.append($("<option></option>")
-		       .attr("value", val).text(name));
-	});
-	$("#selectPatternDiv").show();
-	// Now, when user selects one of these the change callback will happen
+    // Add the choices we read from the json file
+    $.each(plist, function(key, val) {
+        // remove the .js from the end
+        var name = val.slice(0,-3);
+        // Add the option to the list
+        $el.append($("<option></option>")
+               .attr("value", val).text(name));
+    });
+    $("#selectPatternDiv").show();
+    // Now, when user selects one of these the change callback will happen
     });
 }
