@@ -1,5 +1,33 @@
 // -------define the canvas
 var canvas = new fabric.Canvas('c');
+var styles = {
+    "patternpoint_style": {
+        "fill": "red",
+        "stroke": "red",
+        "stroke-width": "1"
+    },
+    "controlpoint_style": {
+        "fill": "none",
+        "stroke": "gray",
+        "stroke-width": "1"
+    },
+    "cuttingline_style": {
+        "fill": "none",
+        "stroke": "green",
+        "stroke-linejoin": "miter",
+        "stroke-miterlimit": "4",
+        "stroke-width": "4"
+    },
+    "seamline_style": {
+        "fill": "none",
+        "stroke": "green",
+        "stroke-dasharray": "24,6",
+        "stroke-dashoffset": "0",
+        "stroke-linejoin": "miter",
+        "stroke-miterlimit": "4",
+        "stroke-width": "4"
+    }
+};
 
 // ------- angle and slope -------
 function angleOfDegree(degree) {
@@ -85,54 +113,176 @@ function polarPoint(p1, length, angle) {
 
 
 // ------- drawn canvas points -------
-function newPoint(name, pnt) {
-    var p = new fabric.Point(pnt.x, pnt.y);
-    p.name = name;
-    p.coords = pnt.x + ', ' + pnt.y;
-    return p;
+
+function newPoint(name, pnt, style) {
+    return newPointXY(name, pnt.x, pnt.y, style);
 } // newPoint()
 
-function newPointXY(name, x, y) {
-    var p = new fabric.Point(x, y);
-    p.coords = x + ', ' + y;
-    p.name = name;
+function newPointXY(name, x, y, style) {
+    //var p = new fabric.Circle([x, y], style);
+    if (style === 'patternpoint') {
+        var p = newPatternCircle(name, x, y);
+    } else if (style === 'controlpoint') {
+        var p = newControlCircle(name, x, y);
+    }
+    p.text = new fabric.Text(name, {
+        left: x,
+        top: y,
+        name: name + '_text',
+        fontSize: 10,
+        hasBorders: false,
+        hasControls: false,
+        lockUniScaling: true,
+        selectable: false,
+        reference: true
+    });
+    canvas.add(p.text);
+    canvas.add(p);
+    canvas.sendToBack(p.text);
     return p;
 } // newPointXY()
 
-function newPatternPoint(pnt, in_lines, out_lines) {
-    var p = new fabric.Circle({
-        name: pnt.name,
-        left: pnt.x,
-        top: pnt.y,
+function newPatternCircle(name, x, y) {
+    var pc = new fabric.Circle({
+        name: name,
+        left: x,
+        top: y,
         strokeWidth: 1,
         radius: 5,
-        fill: 'none',
+        fill: '',
         stroke: 'red',
         hasBorders: false,
         hasControls: false,
         lockUniScaling: true,
         selectable: true,
-        reference: true
+        coords: x + ', ' + y,
+        reference: true,
+        ptype: 'pattern'
     });
-    p.inline = [];
-    i = 0;
-    for (item in in_lines) {
-        p.inline[i] = in_lines[i];
-        i += 1;
-    }
-    p.outline = [];
-    i = 0;
-    for (item in out_lines) {
-        p.outline[i] = out_lines[i];
-        i += 1;
-    }
-    canvas.add(p);
-    return p;
-} // patternPoint()
+    return pc;
+} // newPatternCircle()
 
-function newPatternPointXY(group, pname, left, top, previous_pnt, svg_cmd, start) {
-    return newPatternPoint(group, pname, point(left, top), previous_pnt, svg_cmd, start);
-} //patternPointXY()
+function newControlCircle(name, x, y) {
+    var cc = new fabric.Circle({
+        name: name,
+        left: x,
+        top: y,
+        strokeWidth: 1,
+        radius: 5,
+        fill: '',
+        stroke: 'gray',
+        hasBorders: false,
+        hasControls: false,
+        lockUniScaling: true,
+        selectable: true,
+        coords: x + ', ' + y,
+        reference: true,
+        ptype: 'control'
+    });
+
+    return cc;
+} // newControlCircle()
+
+
+function newLine(p0, p1, style) {
+    if (style === 'seamline') {
+        console.log('seamline');
+        var new_line = new fabric.Line([p0.left, p0.top, p1.left, p1.top], {
+            fill: 'green',
+            stroke: 'green',
+            strokeLinejoin: 'miter',
+            strokeMiterlimit: 4,
+            strokeWidth: 3,
+            hasBorders: false,
+            hasControls: false,
+            selectable: false,
+            reference: false,
+            name: 'Line_' + p0.name + p1.name
+        });
+    } else if (style === 'cuttingline') {
+        console.log('cuttingline');
+        var new_line = new fabric.Line([p0.left, p0.top, p1.left, p1.top], {
+            "fill": "green",
+            "stroke": "green",
+            "stroke-dasharray": "24,6",
+            "stroke-dashoffset": "0",
+            "stroke-linejoin": "miter",
+            "stroke-miterlimit": "4",
+            "stroke-width": "3",
+            "selectable": false,
+            "name": 'Line_' + p0.name + p1.name
+        });
+    }
+
+    if (p0.hasOwnProperty('outPath') === false) {
+        p0.outPath = [];
+    }
+    p0.outPath.push(new_line);
+    if (p1.hasOwnProperty('inPath') === false) {
+        p1.inPath = [];
+    }
+    p1.inPath.push(new_line);
+    canvas.add(new_line);
+    return new_line;
+}
+
+function newCurve(p0, c0, c1, p1, style) {
+    //path_arr = [['M', p0.left, p0.top], ['C', c1.left, c1.top, p1.left, p1.top]]; //array of arrays
+    console.log('p0, c0, c1, p1' + p0 + ' '+ c0 + ' ' + c1 + ' ' + p1);
+    path_str = formatPath('M', p0, 'C', c0, c1, p1);
+    if (style === 'seamline') {
+        var new_path = new fabric.Path(path_str, {
+            fill: '',
+            stroke: 'green',
+            strokeLinejoin: 'miter',
+            strokeMiterlimit: 4,
+            strokeWidth: 3,
+            hasBorders: false,
+            hasControls: false,
+            selectable: false,
+            reference: false,
+            name: 'Curve_' + p0.name + p1.name
+        });
+    } else if (style === 'cuttingline') {
+        var new_path = new fabric.Path(path_arr, {
+            "fill": "green",
+            "stroke": "green",
+            "stroke-dasharray": "24,6",
+            "stroke-dashoffset": "0",
+            "stroke-linejoin": "miter",
+            "stroke-miterlimit": "4",
+            "stroke-width": "3",
+            "selectable": false,
+            "name": 'Curve_' + p0.name + p1.name
+        });
+    }
+
+    //new_path is an outPath for p0 & c0
+    if (p0.hasOwnProperty('outPath') === false) {
+        p0.outPath = [];
+    }
+    p0.outPath.push(new_path);
+    if (c0.hasOwnProperty('outPath') === false) {
+        c0.outPath = [];
+    }
+    c0.outPath.push(new_path);
+
+    //new_path is an inPath for c1 & p1
+    if (c1.hasOwnProperty('inPath') === false) {
+        c1.inPath = [];
+    }
+    c1.inPath.push(new_path);
+
+    if (p1.hasOwnProperty('inPath') === false) {
+        p1.inPath = [];
+    }
+    p1.inPath.push(new_path);
+
+    //draw new_path on canvas
+    canvas.add(new_path);
+    return new_path;
+}
+
 
 function newControlPoint(group, cname, pnt, parent_pnt) {
     var c = new fabric.Circle({
@@ -150,7 +300,7 @@ function newControlPoint(group, cname, pnt, parent_pnt) {
     });
     var ctext = new fabric.Text(cname, {
         name: cname + '_text',
-        fontSize: 9
+        fontSize: 11
     });
     var cgroup = new fabric.Group([ctext, c], {
         name: cname + "_group",
@@ -239,6 +389,7 @@ function formatPath(string) {
     var arg = "";
     while (i < args.length) {
         arg = args[i];
+        console.log('arg = ' + arg);
         if (typeof arg === "string") {
             if (path_str === "") {
                 //1st item in the path string

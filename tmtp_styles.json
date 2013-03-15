@@ -111,6 +111,11 @@
         "stroke": "red",
         "stroke-width": "1"
     },
+    "patternpoint_style": {
+        "fill": "red",
+        "stroke": "red",
+        "stroke-width": "1"
+    },
     "controlpoint_style": {
         "fill": "none",
         "stroke": "gray",

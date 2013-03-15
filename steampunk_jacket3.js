@@ -6,41 +6,79 @@ function drawPattern(mydata, styles, md) {
     console.log("drawPattern");
 
     console.log(canvas);
+    jacket_back = new fabric.Group();
+    var A = jacket_back;
 
-    //points
-    var p0 = newPointXY('p0', BORDER, BORDER); //nape
-    var p1 = newPointXY('p1', p0.x, p0.y + (15 * CM));
-    var c1 = newPointXY('c1', p0.x + (15 * CM), p0.y); //temp point
+
+    //circles
+    a1 = newPointXY('a1', BORDER, BORDER, 'patternpoint'); //nape
+    a2 = newPointXY('a2', a1.left, a1.top + (15 * CM), 'patternpoint');
+    a3 = newPointXY('a3', a1.left + 15 * CM, a1.top, 'patternpoint');
+    a3.c0 = newPointXY('a3.c0', a2.left + 7 * CM, a2.top, 'controlpoint'); //control point
+    a3.c1 = newPointXY('a3.c1', a3.left, a1.top + 7 * CM, 'controlpoint'); //control point
+
+
+    //path_str = formatPath('M', a2, 'C', a3c1, a3c2, a3);
+    //console.log('path_str = ' + path_str);
+    //var new_path = new fabric.Path(path_str, {
+    //       fill: 'green',
+    //       stroke: 'green',
+    //       strokeWidth: 4
+    //   });
+    //canvas.add(new_path);
 
     //lines & curves
-    var line1 = new fabric.Line([p0.x, p0.y, p1.x, p1.y], {
-        fill: 'green',
-        strokewidth: 5,
-        selectable: false
-        });
-    canvas.add(line1);
+    newLine(a1, a2, 'seamline');
+    newLine(a1, a3, 'seamline');
+    newCurve(a2, a3.c0, a3.c1, a3, 'seamline');
 
-    //draw patternpoints with links to lines
-    canvas.add(newPatternPoint(p0, in_lines=[null], out_lines=[line1]));
-    canvas.add(newPatternPoint(p1, in_lines=[line1], out_lines=[null]));
-
-
-
-    canvas.observe('object:modified', function(e) {
+    //update lines & text when circles are moved
+    canvas.observe('object:modified', function (e) {
         var p = e.target;
-        console.log(p);
-        i = 0;
-        for (item in p.inline) {
-            p.inline[i] && p.inline[i].set({ 'x2': p.left, 'y2': p.top });  //line feeds into point
-            i += 1;
+
+        if (p.hasOwnProperty("text") === true) {
+            //move text label to new circle location
+            console.log('Moving ' + p.text.name);
+            p.text.set({ 'left': p.left, 'top': p.top });
+
         }
-        i = 0;
-        for (item in p.outline) {
-            p.outline[i] && p.outline[i].set({ 'x1': p.left, 'y1': p.top });  //line feeds out of point
-            i += 1;
+        if (p.hasOwnProperty("inPath") === true) {
+            //path ends at circle
+            for (var i=0; i<p.inPath.length; i++) {
+                ppath = p.inPath[i];
+                console.log('ppath = ' + ppath);
+                if (p.ptype === 'control') {
+                    ppath.path[1][3] = p.left; //c0.x
+                    ppath.path[1][4] = p.top; //c0.y
+                } else if (ppath.type === 'path') {
+                    ppath.path[1][5] = p.left; //p1.x
+                    ppath.path[1][6] = p.top; //p1.y
+                } else if (ppath.type === 'line') {
+                    ppath.set({ 'x2': p.left, 'y2': p.top });
+                }
+            }
+        }
+        if (p.hasOwnProperty("outPath") === true) {
+            //path begins at circle
+            for (var i=0; i<p.outPath.length; i++) {
+                ppath = p.outPath[i];
+                console.log('ppath = ' + ppath);
+                if (p.ptype === 'control') {
+                    ppath.path[1][1] = p.left; //c0.x
+                    ppath.path[1][2] = p.top; //c0.y
+                } else
+                if (ppath.type === 'path') {
+                    ppath.path[0][1] = p.left;  // p0.x
+                    ppath.path[0][2] = p.top;   // p0.y
+                } else if (ppath.type === 'line') {
+                    ppath.set({ 'x1': p.left, 'y1': p.top });
+                }
+
+            }
         }
         console.log(p.name + ' moved!');
         canvas.renderAll();
+        canvas.bringToFront(p);
     });
 
     //list point names & locations in console.log
