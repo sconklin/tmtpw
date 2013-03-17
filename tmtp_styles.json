@@ -7,7 +7,7 @@
         "stroke-width": "4"
     },
     "buttonhole_style": {
-        "fill": "none",
+        "fill": "green",
         "stroke": "green",
         "stroke-linejoin": "miter",
         "stroke-miterlimit": "4",
@@ -18,7 +18,11 @@
         "stroke": "green",
         "stroke-linejoin": "miter",
         "stroke-miterlimit": "4",
-        "stroke-width": "4"
+        "stroke-width": "4",
+        "hasBorders": false,
+        "hasControls": false,
+        "selectable": false,
+        "reference": false
     },
     "dartline_style": {
         "fill": "none",
@@ -27,7 +31,11 @@
         "stroke-miterlimit": "4",
         "stroke-width": "3",
         "stroke-dasharray": "6,6",
-        "stroke-dashoffset": "0"
+        "stroke-dashoffset": "0",
+        "hasBorders": false,
+        "hasControls": false,
+        "selectable": false,
+        "reference": false
     },
     "default_textblock_text_style": {
         "fill": "#000000",
@@ -52,14 +60,14 @@
         "vertical-align": "top"
     },
     "foldline_style": {
-        "fill": "none",
+        "fill": "darkgreen",
         "stroke": "darkgreen",
         "stroke-linejoin": "miter",
         "stroke-miterlimit": "4",
         "stroke-width": "6"
     },
     "grainline_style": {
-        "fill": "none",
+        "fill": "",
         "stroke": "green",
         "stroke-linejoin": "miter",
         "stroke-miterlimit": "4",
@@ -67,15 +75,19 @@
     },
     "gridline_style": {
         "fill": "none",
-        "stroke": "gray",
-        "stroke-linejoin": "miter",
-        "stroke-miterlimit": "4",
-        "stroke-width": "2",
-        "stroke-dasharray": "6,6",
-        "stroke-dashoffset": "0"
+        "stroke": "lightgray",
+        "strokeLinejoin": "miter",
+        "strokeMiterlimit": "4",
+        "strokeWidth": "2",
+        "strokeDasharray": "6, 12",
+        "strokeDashoffset": "0",
+        "hasBorders": false,
+        "hasControls": false,
+        "selectable": false,
+        "reference": true
     },
     "hemline_style": {
-        "fill": "none",
+        "fill": "green",
         "stroke": "green",
         "stroke-linejoin": "miter",
         "stroke-miterlimit": "4",
@@ -84,21 +96,21 @@
         "stroke-dashoffset": "0"
     },
     "line_style": {
-        "fill": "none",
+        "fill": "pink",
         "stroke": "pink",
         "stroke-linejoin": "miter",
         "stroke-miterlimit": "4",
         "stroke-width": "4"
     },
     "markingline_style": {
-        "fill": "none",
+        "fill": "lightgreen",
         "stroke": "lightgreen",
         "stroke-linejoin": "miter",
         "stroke-miterlimit": "4",
         "stroke-width": "5"
     },
     "placement_style": {
-        "fill": "none",
+        "fill": "gray",
         "stroke": "gray",
         "stroke-dasharray": "6,18",
         "stroke-dashoffset": "0",
@@ -107,12 +119,12 @@
         "stroke-width": "4"
     },
     "point_style": {
-        "fill": "red",
+        "fill": "none",
         "stroke": "red",
         "stroke-width": "1"
     },
     "patternpoint_style": {
-        "fill": "red",
+        "fill": "none",
         "stroke": "red",
         "stroke-width": "1"
     },
@@ -123,7 +135,7 @@
     },
     "circle_style": {
         "fill": "none",
-        "stroke": "green",
+        "stroke": "red",
         "stroke-linejoin": "miter",
         "stroke-miterlimit": "4",
         "stroke-width": "4"
@@ -151,7 +163,7 @@
         "vertical-align": "top"
     },
     "reference_path_style": {
-        "fill": "none",
+        "fill": "gray",
         "stroke": "gray",
         "stroke-dasharray": "6,18",
         "stroke-dashoffset": "0",
@@ -160,13 +172,17 @@
         "stroke-width": "2"
     },
     "seamline_style": {
-        "fill": "none",
+        "fill": "green",
         "stroke": "green",
         "stroke-dasharray": "24,6",
         "stroke-dashoffset": "0",
         "stroke-linejoin": "miter",
         "stroke-miterlimit": "4",
-        "stroke-width": "4"
+        "stroke-width": "4",
+        "hasBorders": false,
+        "hasControls": false,
+        "selectable": false,
+        "reference": false
     },
     "textblock_box_style": {
         "fill": "none",
