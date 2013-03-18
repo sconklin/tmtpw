@@ -54,8 +54,8 @@ function drawPattern(mydata, styles,md) {
     var a24 = addPoint('a24', leftPoint(a12, 2 * CM), 'patternpoint'); //back hip side
     var a25 = addPoint('a25', leftPoint(a8, 1.5 * CM), 'patternpoint'); //back hem side
     //jacket back A control points
-    a1.c1 = addPoint('a1.c1', a17, 'controlpoint');
-    a1.c2 = addPoint('a1.c2', rightPoint(a1, distance(a1, a18)/3.0), 'controlpoint');
+    a1.c1 = addPoint('a1.c1', downPoint(a18, distance(a18, a17) * 0.75 ), 'controlpoint');
+    a1.c2 = addPoint('a1.c2', rightPoint(a1, distance(a1, a18) / 3.0), 'controlpoint');
     var length = distance(a2, a13) / 3.0;
     a13.c1 = addPoint('a13.c1', downPoint(a2, length), 'controlpoint');
     a13.c2 = addPoint('a13.c2', polarPoint(a13, length, angleOfLine(a13, a2)), 'controlpoint');
@@ -99,7 +99,7 @@ function drawPattern(mydata, styles,md) {
     var b20 = addPoint('b20', rightPoint(b16, 2 * CM), 'patternpoint'); //front underarm center
     var b21 = addPoint('b21', rightPoint(b17, 2 * CM), 'patternpoint'); //front waist center
     var b22 = addPoint('b22', leftPoint(b18, 6.5 * CM), 'patternpoint'); //on front hem center
-    var b23 = addPoint('b23', upPoint(b18, distance(a6, a5) / 4.0), 'patternpoint'); //ref point on front center line
+    var b23 = addPoint('b23', upPoint(b18, distance(a6, a5) / 5.0), 'patternpoint'); //ref point on front center line
     var b24 = addPoint('b24', intersectLines(b5, b19, b23, b22), 'patternpoint'); //start of front hem
     var b25 = addPoint('b25', upPoint(b20, 16.5 * CM), 'patternpoint'); //front lapel point
     var b26 = addPoint('b26', downPoint(b8, 6.5 * CM), 'patternpoint'); //reference point at neck curve
@@ -113,6 +113,96 @@ function drawPattern(mydata, styles,md) {
     var b33 = addPoint('b33', rightPoint(b30, collar_dart_width / 2.0), 'patternpoint'); //
     var b34 = addPoint('b34', pointOnLineAtLength(b32, b31, -0.5 * CM), 'patternpoint'); //collar dart inside leg
     var b35 = addPoint('b35', pointOnLineAtLength(b33, b31, -0.5 * CM), 'patternpoint'); //collar dart outside leg
+    //front sidepocket
+    var b36 = addPoint('b36', downPoint(b6, distance(a3, a4) + (distance(a4, a5) / 2.0)), 'patternpoint'); //midpoint at top of sidepocket
+    pocket_width = 15 * CM;
+    pocket_height = 5.5 * CM;
+    var b37 = addPoint('b37', polarPoint(b36, pocket_width / 2.0, angleOfLine(b19, b5)), 'patternpoint'); //left top of sidepocket
+    var b38 = addPoint('b38', polarPoint(b36, pocket_width / 2.0 , angleOfLine(b5, b19)), 'patternpoint'); //right top of sidepocket
+    var b39 = addPoint('b39', polarPoint(b38, pocket_height / 2.0, angleOfLine(b5, b19) + ANGLE90 + angleOfDegree(5)), 'patternpoint'); //start of pocket curve
+    var b40 = addPoint('b40', polarPoint(b38, pocket_height, angleOfLine(b38, b39)), 'patternpoint'); //front lower corner of sidepocket
+    var b41 = addPoint('b41', polarPoint(b40, pocket_width / 3.0, angleOfLine(b38, b37)), 'patternpoint'); //end of curve of sidepocket
+    var b42 = addPoint('b42', polarPoint(b40, pocket_width, angleOfLine(b38, b37)), 'patternpoint'); //back lower corner of sidepocket
+    // front side dart
+    var b43 = addPoint('b43', leftPoint(b6, (5.5 * CM)), 'patternpoint'); //N - top inside leg of side dart towards center chest
+    var b44 = addPoint('b44', leftPoint(b43, (1 * CM)), 'patternpoint'); //O -top outside leg of side dart towards side
+    var b45 = addPoint('b45', midPoint(b36, b37), 'patternpoint'); //P - side dart point - touches top edge of side pocket
+    var b46 = addPoint('b46', midPoint(b43, b44), 'patternpoint'); //none -- side dart top center point
+    length = md.back_waist_length - md.back_underarm_height - (2 * CM);
+    var b47 = addPoint('b47', polarPoint(b46, length, angleOfLine(b46, b45)), 'patternpoint'); //Q - 2cm above waistline along dart line b46-b45
+    var b48 = addPoint('b48', leftPoint(b47, (1 * CM)), 'patternpoint'); //R - outside leg - widest part of side dart
+    var b49 = addPoint('b49', rightPoint(b47, (1 * CM)), 'patternpoint'); //S - inside leg - widest part of side dart
+
+
+
+    //jacket front B control points
+    //A front center lapel & buttons/buttonholes
+    length = distance(b25, b20) / 3.0; //from b25 to b20 - front lapel
+    b20.c1 = addPoint('b20.c1', polarPoint(b25, length, angleOfDegree(85)), 'controlpoint');
+    b20.c2 = addPoint('b20.c2', polarPoint(b20, length, angleOfDegree(-85)), 'controlpoint');
+    length = distance(b21, b22) / 3.0; //from b21 to b22 - front jacket curve
+    b22.c1 = addPoint('b22.c1', downPoint(b21, length), 'controlpoint');
+    b22.c2 = addPoint('b22.c2', b23, 'controlpoint');
+    //B hem
+    length = distance(b22, b5) / 3.0; //from b22 to b5 - front jacket hem
+    b5.c1 = addPoint('b5.c1', b24, 'controlpoint'); //from b22 to b5 - front jacket hem
+    b5.c2 = addPoint('b5.c2', b24, 'controlpoint'); //from b22 to b5 - front jacket hem
+    //B side
+    length = distance(b4, b3) / 3.0; //from b4 to b3
+    b3.c1 = addPoint('b3.c1', polarPoint(b4, length, angleOfLine(b5, b4)), 'controlpoint'); //from b4 to b3
+    b3.c2 = addPoint('b3.c2', polarPoint(b3, length, angleOfLine(b1, b4)), 'controlpoint'); //from b4 to b3
+    length = distance(b3, b1) / 3.0; //from b3 to b1
+    b1.c1 = addPoint('b1.c1', polarPoint(b3, length, angleOfLine(b4, b1)), 'controlpoint'); //from b3 to b1
+    b1.c2 = addPoint('b1.c1', polarPoint(b1, length, angleOfLine(b1, b3)), 'controlpoint'); //from b3 to b1
+    length = distance(b1, b2) / 3.0; //from b1 to b2
+    b2.c1 = addPoint('b2.c1', polarPoint(b1, length, angleOfLine(b3, b1)), 'controlpoint'); //from b1 to b2
+    b2.c2 = addPoint('b2.c2', polarPoint(b2, length, angleOfLine(b2, b2.c1)), 'controlpoint'); //from b1 to b2
+    //B armscye
+    length = distance(b14, b13) / 3.0; //from b11 to b13
+    b13.c1 = addPoint('b13.c1', polarPoint(b14, length, angleOfLine(b14, b11)), 'controlpoint'); //from b11 to b13
+    b13.c2 = addPoint('b13.c2', polarPoint(b13, length, angleOfLine(b10, b11)), 'controlpoint'); //from b11 to b13
+    length = distance(b13, b10) / 3.0; //from b13 to b10
+    b10.c1 = addPoint('b10.c1', polarPoint(b13, length, angleOfLine(b11, b10)), 'controlpoint'); //from b10 to b13
+    b10.c2 = addPoint('b10.c2', polarPoint(b10, length, angleOfLine(b10, b10.c1)), 'controlpoint'); //from b10 to b13
+    length = distance(b15, b46) / 3.0; //from b15 to b46 - armscye curve
+    b44.c2 = addPoint('b44.c2', leftPoint(b44, length), 'controlpoint'); //from b15 to b44 - armscye curve
+    b44.c1 = addPoint('b44.c1', polarPoint(b15, length, angleOfLine(b2, b44.c2)), 'controlpoint'); //from b15 to b44 - armscye curve
+    length = distance(b2, b15) /3.0; //from b12 to b15 - armscye curve
+    b15.c2 = addPoint('b15.c2', polarPoint(b15, length, angleOfLine(b44.c2, b2)), 'controlpoint'); //from b2 to b15 - armscye curve
+    b15.c1 = addPoint('b15.c1', polarPoint(b2, length, angleOfLine(b2, b15.c2)), 'controlpoint'); //from b2 to b15 - armscye curve
+    length = distance(b43, b14) / 3.0; //from b43 to b14 - armscye curve
+    b14.c1 = addPoint('b14.c1', rightPoint(b43, length), 'controlpoint'); //from b43 to b14 - armscye point
+    b14.c2 = addPoint('b14.c2', polarPoint(b14, length, angleOfLine(b11, b14.c1)), 'controlpoint'); //from b43 to b14 - armscye curve
+    //B shoulder
+    length = distance(b10, b8) / 3.0; //from b10 to b8 - shoulder seam
+    angle1 = (angleOfLine(b10, b7) + angleOfLine(b10, b8)) / 2.0;
+    angle2 = (angleOfLine(b8, b7) + angleOfLine(b8, b10)) / 2.0;
+    b8.c1 = addPoint('b8.c1', polarPoint(b10, length, angle1), 'controlpoint'); //from b10 to b8 - shoulder seam
+    b8.c2 = addPoint('b8.c2', polarPoint(b8, length, angle2), 'controlpoint'); //from b10 to b8 - shoulder seam
+    //B neck
+    length = distance(b8, b29) / 3.0; //from b8 to b29 - neck curve
+    b29.c1 = addPoint('b29.c1', downPoint(b8, length), 'controlpoint'); //from b8 to b29 - neck curve
+    b29.c2 = addPoint('b29.c2', polarPoint(b29, length, angleOfLine(b28, b8)), 'controlpoint'); //from b8 to b29 - neck curve
+    length = distance(b29, b28) / 3.0; //from b29 to b28 - neck curve
+    b28.c1 = addPoint('b28.c1', polarPoint(b29, length, angleOfLine(b8, b28)), 'controlpoint'); //from b29 to b28 - neck curve
+    b28.c2 = addPoint('b28.c2', polarPoint(b28, length, angleOfLine(b25, b26)), 'controlpoint'); //from b29 to b28 - neck curve
+    //B side dart
+    length = distance(b44, b48) / 3.0;
+    b48.c2 = addPoint('b48.c2', polarPoint(b48, length, angleOfLine(b45, b46)), 'controlpoint');
+    b48.c1 = addPoint('b49.c1', polarPoint(b44, length, angleOfLine(b44, b48.c2)), 'controlpoint');
+    length = distance(b49, b45) / 3.0;
+    b45.c11 = addPoint('b45.c11', polarPoint(b49, length, angleOfLine(b46, b45)), 'controlpoint');
+    b45.c12 = addPoint('b45.c12', polarPoint(b45, length, angleOfLine(b45, b45.c11)), 'controlpoint');
+    length = distance(b43, b49) / 3.0;
+    b49.c2 = addPoint('b49.c2', polarPoint(b49, length, angleOfLine(b45, b46)), 'controlpoint');
+    b49.c1 = addPoint('b49.c1', polarPoint(b43, length, angleOfLine(b43, b49.c2)), 'controlpoint');
+    length = distance(b48, b45) / 3.0;
+    b45.c21 = addPoint('b45.c21', polarPoint(b48, length, angleOfLine(b46, b45)), 'controlpoint');
+    b45.c22 = addPoint('b45.c22', polarPoint(b45, length, angleOfLine(b45, b45.c21)), 'controlpoint');
+    //B side pocket
+    length = distance(b39, b41) / 3.0;
+    b41.c1 = addPoint('b41.c1', b40, 'controlpoint');
+    b41.c2 = addPoint('b41.c2', polarPoint(b41, length, angleOfLine(b42, b41)), 'controlpoint');
 
     //list point names & locations in console.log
     displayPoints(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25);
@@ -123,7 +213,7 @@ function drawPattern(mydata, styles,md) {
             'M', a5, 'L', a12, 'M', a18, 'L', a17);
     var Agridline = new fabric.Path(path_str, styles.gridline_style);
     canvas.add(Agridline);
-    canvas.sendToBack(Agridline);
+
     //back jacket A seamline
     addLine(a1, a2, 'seamline');
     addCurve(a2, a13.c1, a13.c2, a13, 'seamline');
@@ -139,9 +229,13 @@ function drawPattern(mydata, styles,md) {
     addCurve(a21, a19.c1, a19.c2, a19, 'seamline');
     addCurve(a19, a18.c1, a18.c2, a18, 'seamline');
     addCurve(a18, a1.c1, a1.c2, a1, 'seamline');
+    //back jacket A side dart
+
+    //back jacket side pocket
 
     //draw jacket A
     canvas.add(A);
+    canvas.sendToBack(Agridline);
 
     //back jacket B
     //back jacket gridline
@@ -154,20 +248,53 @@ function drawPattern(mydata, styles,md) {
     var Bgridline = new fabric.Path(path_str, styles.gridline_style);
     canvas.add(Bgridline);
     //back jacket  seamline & cuttingline
-    path_str = formatPath('M', b25, 'L', b20, 'L', b21, 'L', b22, 'L', b24, 'L', b5, 'L', b4, 'L', b3, 'L', b1, 'L', b2,
-                        'L', b15, 'L', b14, 'L', b11, 'L', b13, 'L', b10, 'L', b8, 'L', b29, 'L', b28,
-                        'L', b34, 'L', b31, 'L', b35, 'L', b25, 'z');
-    var Bseamline = new fabric.Path(path_str, styles.seamline_style);
-    var Bcuttingline = new fabric.Path(path_str, styles.cuttingline_style);
-    canvas.add(Bseamline);
-    canvas.add(Bcuttingline);
+    //B front lapel & buttons/buttonholes & center line
+    addCurve(b25, b20.c1, b20.c2, b20, 'seamline');
+    addLine(b20, b21, 'seamline');
+    addCurve(b21, b22.c1, b22.c2, b22, 'seamline');
+    //B hem
+    addCurve(b22, b5.c1, b5.c2, b5, 'seamline');
+    //B side
+    addLine(b5, b4, 'seamline');
+    addCurve(b4, b3.c1, b3.c2, b3, 'seamline');
+    addCurve(b3, b1.c1, b1.c2, b1, 'seamline');
+    addCurve(b1, b2.c1, b2.c2, b2, 'seamline');
+    //B armscye
+    addCurve(b2, b15.c1, b15.c2, b15, 'seamline');
+    addCurve(b15, b44.c1, b44.c2, b44, 'seamline');
+    addCurve(b43, b14.c1, b14.c2, b14, 'seamline');
+    addCurve(b14, b13.c1, b13.c2, b13, 'seamline');
+    addCurve(b13, b10.c1, b10.c2, b10, 'seamline');
+    //B shoulder
+    addCurve(b10, b8.c1, b8.c2, b8, 'seamline');
+    //B neck
+    addCurve(b8, b29.c1, b29.c2, b29, 'seamline');
+    addCurve(b29, b28.c1, b28.c2, b28, 'seamline');
+    //B lapel top edge & lapel dart
+    addLine(b28, b34, 'seamline');
+    addLine(b34, b31, 'seamline');
+    addLine(b31, b35, 'seamline');
+    addLine(b35, b25, 'seamline');
+    //B side dart
+    addCurve(b43, b49.c1, b49.c2, b49, 'seamline');
+    addCurve(b49, b45.c11, b45.c12, b45, 'seamline');
+    addCurve(b44, b48.c1, b48.c2, b48, 'seamline');
+    addCurve(b48, b45.c21, b45.c21, b45, 'seamline');
+    addLine(b46, b45, 'seamline');
+    //B side pocket
+    addLine(b37, b38, 'seamline');
+    addLine(b38, b39, 'seamline');
+    addCurve(b39, b41.c1, b41.c2, b41, 'seamline');
+    addLine(b41, b42, 'seamline');
+    addLine(b42, b37, 'seamline');
+
     //draw back jacket B
     canvas.add(B);
     //arrange paths
-    Bseamline.sendToBack(); //seamline under points
-    Bcuttingline.sendToBack(); //cuttingline under seamline
     Bgridline.sendToBack(); //gridline under cuttingline
 
+    // ------- all pattern pieces have been drawn -------
+    // ------- define observers -------
 
     //update lines & text when circles are moved
     canvas.observe('object:modified', function (e) {
@@ -176,7 +303,7 @@ function drawPattern(mydata, styles,md) {
         if (p.hasOwnProperty("text") === true) {
             //move text label to new circle location
             console.log('Moving ' + p.text.name);
-            p.text.set({ 'left': p.left, 'top': p.top });
+            p.text.set({ 'left': p.left, 'top': p.top - 10});
 
         }
         if (p.hasOwnProperty("inPath") === true) {
