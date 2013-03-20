@@ -1,0 +1,32 @@
+#selectMeasurementsDiv{
+   z-index: 100;
+   position: absolute;
+   background-color: rgba(123, 123,123, 0.8);
+   display: none;
+   top: 0;
+   left: 0;
+   width: 200px;
+   height: 300px;
+}
+#selectPatternDiv{
+   z-index: 100;
+   position: absolute;
+   background-color: rgba(123, 123,123, 0.8);
+   display: none;
+   top: 0;
+   left: 0;
+   width: 200px;
+   height: 300px;
+}
+#popupSelectM{
+   z-index: 1000;
+   position: absolute;
+   top: 130px;
+   left: 10px;
+}​
+#popupSelectP{
+   z-index: 1000;
+   position: absolute;
+   top: 130px;
+   left: 10px;
+}​
