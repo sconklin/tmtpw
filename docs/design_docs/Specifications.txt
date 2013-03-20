@@ -1,0 +1,236 @@
+A. Project Goals/Functionality:
+
+    1. Create/edit/print garment patterns using body measurements.
+        - Patterns are sized with body measurements, not scaled with grading systems.
+        - The application provides uneditable pattern templates for basic blocks and complex finished designs.
+        - The user can create a pattern from scratch or by opening one or more template files and saving changes to a different patternname.
+
+    2. Users can input their body measurements
+        - Measurements are stored in a database
+        - Multiple users can store measurements in the database
+        - Pattern files read measurements from the database
+
+    3. Users can input their own tutorials (general, and pattern)
+        - Instructions
+        - Images
+        - Videos
+        - Audio
+
+    4. Users can document their progress
+        - Photo/Image/Video
+        - comments
+
+    5. Users can post their work on social media
+        - facebook/twitter/pinterest/status.net/identi.ca/tumblr/wordpress/bloggr
+
+    6. Outputs:
+        - User generated files
+            -- Pattern file
+            -- SVG/PNG/PDF image file
+        - Print PDF
+        - email PDF
+        - Social media posts
+
+    7. Future: 3D viewer/editor
+
+B. Data Requirements
+
+    1. Inputs:
+       User name = User Database + User Input
+       Measurements = Measurement Database + User Input
+       Patterns = Pattern Database or Directories + User Input
+       Instructions = Instructions Database &/or Directories + User Input
+       Social Media = Media Database + User Input
+
+    2. Outputs:
+       Pattern files = Pattern Database
+       Image files (SVG, PDF) = User Directories or Database
+       Print files = Printer or Plotter
+       Social media posts = Connection to Web
+
+C. Control Flow:
+    1. Tau Meta Tau Physica Main page
+        > Username Field
+        > Measurements Button
+        > Patterns Button
+        > Current Favorites / Last Item Viewed (FUTURE)
+    2. Measurements Page
+        > Select/Edit/Create measurements
+            >> TBD
+            >> Add Custom Fields
+        > Save
+        > Print
+        > View 3D Avatar (FUTURE)
+    3. Patterns Page
+        > Select Measurement File
+            >> Show/Hide Measurement Sliders
+        > Select/Edit/Create pattern
+            >> TBD
+            >> Zoom In/Out
+            >> Undo/Redo
+            >> Start Over (Refresh)
+        > Select/Edit/Create Instruction
+            >> TBD
+            >> Upload Document/Video/Photo/Image/Audio
+        > Select/Edit/Create Progress
+            >>> TBD
+            >>>Blog
+            >>>Share
+        > Switch to 3D context (FUTURE)
+        > Save/Save As
+        > Print
+            >> Pattern
+            >> Instructions
+            >> All
+
+D.Database model
+    1. User Database
+        User ID
+        First Name
+        Last Name
+        Address1
+        Address2
+        City
+        State/Province
+        Country
+        Postal Code
+        email
+        twitter
+        facebook
+        status.net
+        identi.ca
+        pinterest
+        tumblr
+        blogger
+        wordpress
+
+    2. Measurement Database
+        User ID
+
+        customername
+        measureunit
+
+        neck_circumference
+        neck_width
+
+        underarm_circumference
+        front_underarm_width
+        front_underarm_height
+        back_underarm_width
+        back_underarm_height
+
+        across_chest
+        across_chest_height
+        across_chest_balance
+
+        across_back
+        across_back_height
+        across_back_balance
+
+        bust_circumference
+        front_bust_width
+        front_bust_height
+        back_bust_width
+        back_bust_height
+        bust_point_distance
+        bust_underarm_height
+
+        underbust_circumference
+        front_underbust_width
+        front_underbust_height
+        side_underbust_height
+        back_underbust_width
+
+        shoulder
+        front_shoulder_height
+        front_shoulder_width
+        back_shoulder_height
+        back_shoulder_width
+
+        side
+
+        front_neck_balance
+        front_shoulder_balance
+        front_waist_balance
+        back_neck_balance
+        back_shoulder_balance
+        back_waist_balance
+
+        waist_circumference
+        front_waist_width
+        front_waist_length
+        back_waist_width
+        back_waist_length
+
+        armscye_height
+        armscye_width
+        armscye_circumference
+
+        overarm_length
+        underarm_length
+        elbow_length
+        sleevecap_offset
+        sleevecap_circumference
+        bicep_circumference
+        elbow_circumference
+        wrist_circumference
+        hand_circumference
+
+        hip_circumference
+        front_hip_width
+        front_hip_length
+        back_hip_width
+        back_hip_length
+        side_hip_length
+
+        front_rise
+        side_rise
+        back_rise
+
+        crotch_length
+        front_crotch_length
+        back_crotch_length
+        front_crotch_extension
+        back_crotch_extension
+
+        outseam
+        inseam
+
+        thigh_circumference
+        front_thigh_width
+        back_thigh_width
+
+        knee_length
+        knee_circumference
+        calve_circumference
+        ankle_circumference
+        foot_circumference
+
+    3. Pattern Directory Structure, Naming Convention, or Database
+        a. Template Patterns (non-editable)
+            i. Block Patterns
+            ii. Design Patterns
+        b. User Patterns
+            i. Block Patterns
+            ii. Design Patterns
+
+    4. Instructions Directory Structure, Naming Convention, or Database
+        Documents
+        Video
+        Audio
+        Image/Photo
+
+
+E. Interfaces to other systems
+    1. Social Media
+        email
+        twitter
+        facebook
+        status.net
+        identi.ca
+        pinterest
+        tumblr
+        blogger
+        wordpress
+    2. Community web site (FUTURE)
+

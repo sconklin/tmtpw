@@ -1,0 +1,75 @@
+Examples of usage:
+       right click to add pattern:
+            {id,
+            description,
+            pattern number,
+            number of pattern pieces}
+       right click on pattern to add pattern piece:
+            {id,
+            description,
+            number to cut:
+               {fabric,
+               facing,
+               lining,
+               interfacing,
+               interlining}
+            }
+       right click on pattern piece to add:
+            {point:
+               {id,
+               type: 
+                  {patternPoint: 'default/none'|'corner'|'smooth'|'symmetric',
+                  controlPoint}
+               formula,
+               previousNode},
+            dart: 
+               {id,
+               point: 'apex'|'insideLeg'|'outsideLeg',
+               length,
+               nearestInsidePoint,
+               nearestOutsidePoint},
+             tuck: 
+               {id,
+               point: 'upperInside'|'upperOutside'|'lowerInside'|'lowerOutside',
+               length,
+               nearestInsidePoint,
+               nearestOutsidePoint},
+             fold:
+               {id,
+               label,
+               point: 'apex'|'endPoint'|'insideLeg'|'outsideLeg',
+               length,
+               nearestInsidePoint,
+               nearestOutsidePoint},
+             notch:
+               {id,
+               type: 'singleNotch'|'doubleNotch'|'tripleNotch',
+               number,
+               formula},
+             circle pair:
+               {id,
+               type: 'small'|'medium'|'large',
+               number,
+               formula},
+             triangle:
+               {id,
+               type: 'small'|'medium'|'large',
+               number},
+             grainline:
+               {id,
+               formula},
+             buttonline:
+               {id,
+               formula,
+               spacing,
+               buttonsize,
+               buttonholetype},
+
+       select begin & end point to define seam, right click to add:
+        id 
+        orderOfConstruction
+        seamAllowance
+        hem:
+            type: singleFold|doubleFold|rolled
+            width
+	
