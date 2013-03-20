@@ -422,7 +422,7 @@ function convertMeasurementData(mdata){
 // ------- global constants -------
 
 //TODO:  replace with zoom button on canvas
-var zoom = 1 / 2.0; // temporary - show at 1/4 size to fit canvas in window
+var zoom = 1; // temporary - show at 1/4 size to fit canvas in window
 
 var ANGLE45 = angleOfDegree(45);
 var ANGLE90 = angleOfDegree(90);
