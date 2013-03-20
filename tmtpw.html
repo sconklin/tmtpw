@@ -3,113 +3,25 @@
   <head>
     <meta charset="utf-8">
     <h1>Tau Meta Tau Physica Patternmaking Software</h1>
-
+    <LINK href="cleaner.css" rel="stylesheet" type="text/css">
     <script src="https://raw.github.com/kangax/fabric.js/master/dist/all.js"></script>
-    <script type="text/javascript" src="js/undomanager.js"></script>     
-    
   </head>
   <body>
-    <canvas id="c" width="300" height="300" style="border:1px solid #ccc"></canvas>
-    <input type="file" id="selectFile"  style="visibility:hidden;position:absolute;top:-50;left:-50"/>
-    <input type="file" id="selectPattern"  style="visibility:hidden;position:absolute;top:-50;left:-50"/>
-    <a id="selectMeasurementFile" href="javascript:clickOn('selectFile');">Select a Measurement file</a>
-    <a id="selectPatternScript" style="display:none" href="javascript:clickOn('selectPattern');">Select a Pattern Script File</a>
-    <script>
-        
-//TODO: show measurement file name - customer name
-//TODO: show pattern file name - pattern number & description
-//TODO: show point labels - move labels with points - done - ss 03/09/13
-//TODO: create sliders panel with measurement data
-//TODO: save as SVG
-//TODO: save to PDF
-//TODO: print PDF
-
-//synthesize a click on the specified element
-function clickOn(id) {
-    element = document.getElementById(id);
-    element.click();
-}
-
-//main
-(function() {
-    
-    // -------handle measurement files 
-    (function getMeasurementFile() {
-        fileInput = document.getElementById("selectFile");
-        fileInput.addEventListener("change", handleFilesFILEAPI, false);
-    })(); //getMeasurementFile()
-      
-    // -------handle pattern script files 
-    (function getPatternScriptFile() {
-        fileInput = document.getElementById("selectPattern");
-        fileInput.addEventListener("change", handleScriptLoadFILEAPI, false);
-    })(); //getPatternScriptFile()
-      
-    function handleFilesFILEAPI(evt) {
-        var files = evt.target.files; // FileList object
-        f = files[0];
-        //console.log(f);
-        var reader = new FileReader();
-        // Closure to capture the file information.
-        reader.onload = (function (theFile) {
-            return function (e) { 
-                JsonObj = e.target.result
-                //console.log(JsonObj);
-                mydata = JSON.parse(JsonObj);
-                // Now, hide the measurement prompt
-                flink = document.getElementById("selectMeasurementFile");
-                flink.style.display = 'none';
-                // and expose the pattern script link
-                slink = document.getElementById("selectPatternScript");
-                slink.style.display = 'block';
-                //drawPattern(mydata); //the parsed JSON file is sent to drawPattern()
-            };
-        // 
-        })(f);
-        // Read in JSON as a text string
-        reader.readAsText(f, 'UTF-8');
-    }    
-      
-    function handleScriptLoadFILEAPI(evt) {
-        var files = evt.target.files; // FileList object
-        f = files[0];
-        if ('name' in f) {
-            var fileName = f.name;
-        }
-        //console.log(fileName);
-        loadScript(fileName);
-    }    
-
-    function loadScript(url){
-        //console.log('loadScript');
-	var script = document.createElement("script")
-	script.type = "text/javascript";
-
-        // turn off the pattern script link
-        slink = document.getElementById("selectPatternScript");
-        slink.style.display = 'none';
-
-    	if (script.readyState){  //IE
-	    script.onreadystatechange = function(){
-		if (script.readyState == "loaded" ||
-			script.readyState == "complete"){
-		    script.onreadystatechange = null;
-		    drawPattern(mydata);
-		}
-	    };
-	} else {  //Others
-	    script.onload = function(){
-		drawPattern(mydata);
-	    };
-	}
-
-        script.src = url;
-        document.getElementsByTagName("head")[0].appendChild(script);
-    }
-
-})(); //function()
-
-
-    </script>
+    <input id="SMButton" type="button" value="Select Measurements" />
+    <input id="SPButton" type="button" value="Select Pattern" />
+    <br />
+    <div id="selectMeasurementsDiv">
+      <select id="popupSelectM">
+    <option value="DUMMY">Dummy</option>
+      </select>
+    </div>
+    <div id="selectPatternDiv">
+      <select id="popupSelectP">
+      </select>
+    </div>
+    <canvas id="c" width="300" height="300" style="border:1px selectable=false solid #ccc"></canvas>
+    <script type="text/javascript" src="jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="cleaner.js"></script>
+    <script type="text/javascript" src="tmtp_support.js"></script>
   </body>
 </html>
