@@ -205,8 +205,8 @@ function drawPattern(mydata, styles,md) {
     b41.c2 = addPoint('b41.c2', polarPoint(b41, length, angleOfLine(b42, b41)), 'controlpoint');
 
     //list point names & locations in console.log
-    displayPoints(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25);
-    displayPoints(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20);
+    //displayPoints(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25);
+    //displayPoints(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20);
 
     //back jacket A gridline
     var path_str = formatPath('M', a1, 'L', a7, 'L', a8, 'L', a6, 'L', a1, 'M', a2, 'L', a19, 'M', a3, 'L', a10, 'M', a4, 'L', a11,

@@ -159,7 +159,6 @@ function addControlCircle(name, x, y) {
 
 function addLine(p0, p1, style) {
     if (style === 'seamline') {
-        console.log('seamline');
         var new_line = new fabric.Line([p0.left, p0.top, p1.left, p1.top], {
             fill: "green",
             stroke: "green",
@@ -173,7 +172,6 @@ function addLine(p0, p1, style) {
             name: "seamline_" + p0.name + p1.name
         });
     } else if (style === 'cuttingline') {
-        console.log('cuttingline');
         var new_line = new fabric.Line([p0.left, p0.top, p1.left, p1.top], {
             fill: "green",
             stroke: "green",
@@ -189,7 +187,6 @@ function addLine(p0, p1, style) {
             name: 'cuttingline_' + p0.name + p1.name
         });
     } else if (style === 'gridline') {
-        console.log('gridline');
         var new_line = new fabric.Line([p0.left, p0.top, p1.left, p1.top], {
             fill: "gray",
             stroke: "gray",
@@ -203,7 +200,6 @@ function addLine(p0, p1, style) {
             name: 'gridine_' + p0.name + p1.name
         });
     }
-    console.log(new_line);
     if (p0.hasOwnProperty('outPath') === false) {
         p0.outPath = [];
     }
@@ -221,7 +217,7 @@ function addLine(p0, p1, style) {
 
 function addCurve(p0, c0, c1, p1, style) {
     //path_arr = [['M', p0.left, p0.top], ['C', c1.left, c1.top, p1.left, p1.top]]; //array of arrays
-    console.log('p0, c0, c1, p1' + p0 + ' '+ c0 + ' ' + c1 + ' ' + p1);
+    //console.log('p0, c0, c1, p1' + p0 + ' '+ c0 + ' ' + c1 + ' ' + p1);
     path_str = formatPath('M', p0, 'C', c0, c1, p1);
     if (style === 'seamline') {
         var new_path = new fabric.Path(path_str, {
@@ -289,7 +285,7 @@ function formatPath(string) {
     var arg = "";
     while (i < args.length) {
         arg = args[i];
-        console.log('arg = ' + arg);
+        //console.log('arg = ' + arg);
         if (typeof arg === "string") {
             if (path_str === "") {
                 //1st item in the path string
@@ -302,7 +298,7 @@ function formatPath(string) {
         }
         i += 1;
     }
-    console.log(path_str);
+    //console.log(path_str);
     return path_str.trim(); //return path_str with leading & trailing whitespace removed
 } //formatPath()
 
@@ -332,10 +328,10 @@ function intersectLines(p1, p2, p3, p4) {
     //Find intersection between two lines. Accepts p1,p2,p3,p4 as class Point. Returns p5 as class Point
     //Intersection does not have to be within the supplied line segments
 
-    console.log('intersectLines:    ' + p1.name);
-    console.log('                   ' + p2.name);
-    console.log('                   ' + p3.name);
-    console.log('                   ' + p4.name);
+    //console.log('intersectLines:    ' + p1.name);
+    //console.log('                   ' + p2.name);
+    //console.log('                   ' + p3.name);
+    //console.log('                   ' + p4.name);
     var x = 0.0;
     var y = 0.0;
     if (p1.left === p2.left) {
@@ -374,9 +370,9 @@ function intersectLines(p1, p2, p3, p4) {
 
 function intersectLineAtY(p1, p2, y) {
     //Given y, find x on line p1 to p2. Returns fabric.Point() at point on line
-    console.log(p1);
-    console.log(p2);
-    console.log(p3);
+    //console.log(p1);
+    //console.log(p2);
+    //console.log(p3);
     var p3 = new fabric.Point();
     if (p1.y === p2.y) {
         // line is horizontal
