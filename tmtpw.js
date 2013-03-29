@@ -1,6 +1,3 @@
-// Turn off caching, or changes to json files, etc
-// won't get reloaded
-$.ajaxSetup({ cache: false });
 
 function drawPatternIfReady(){
     // See whether everything is ready to draw a pattern.
@@ -29,38 +26,6 @@ function loadStyles(styleFileName){
     drawPatternIfReady();
     });
 }
-
-loadStyles("tmtp_styles.json");
-
-// catch the click on the measurements button
-$("#SMButton").click(function(e){
-    e.preventDefault();
-    console.log("MButton");
-    getMeasurement();
-});
-
-// catch the click on the patterns button
-$("#SPButton").click(function(e){
-    e.preventDefault();
-    console.log("PButton");
-    getPattern();
-});
-
-// Triggered when the user selects a measurement file
-// from the popup
-$("#popupSelectM").change(function(e) {
-    console.log("Measurement file CHANGED");
-    mFileName = $("#popupSelectM").val();
-    // Now we have a file selected
-    $("#selectMeasurementsDiv").hide();
-    $.getJSON(mFileName, function(mdata) {
-    // Now we have measurement data
-    window.measurementData = mdata
-
-    // See whether we're ready to draw
-    drawPatternIfReady();
-    });
-});
 
 function getMeasurement(){
     // Fetch a list of available Measurements
@@ -108,30 +73,6 @@ function replaceJsFile(oldfilename, newfilename){
     }
 }
 
-// Triggered when the user selects a pattern file
-// from the popup
-$("#popupSelectP").change(function(e) {
-    console.log("Pattern file CHANGED");
-    pFileName = $("#popupSelectP").val();
-    // Now we have a file selected, so hide the selection popup
-    $("#selectPatternDiv").hide();
-
-    if(typeof drawPattern == 'function')
-    {
-    // The funtion drawPattern exists, indicating that we previously loaded a pattern script
-    // So we replace the old one with the new one
-    replaceJsFile(window.scriptSelection, pFileName);
-    } else {
-    el = createJsFile(pFileName);
-    $('body').append(el);
-    }
-    // Save the file name that we loaded
-    window.scriptSelection = pFileName;
-
-    // See whether we're ready to draw
-    drawPatternIfReady();
-});
-
 function getPattern(){
     // Fetch a list of available pattern files
     // Right now this grabs a list from a json file,
@@ -160,3 +101,69 @@ function getPattern(){
     // Now, when user selects one of these the change callback will happen
     });
 }
+
+
+// --------
+
+// Turn off caching, or changes to json files, etc
+// won't get reloaded
+$.ajaxSetup({ cache: false });
+
+loadStyles("tmtp_styles.json");
+
+// catch the click on the measurements button
+$("#SMButton").click(function(e){
+    e.preventDefault();
+    console.log("MButton");
+    getMeasurement();
+});
+
+// catch the click on the patterns button
+$("#SPButton").click(function(e){
+    e.preventDefault();
+    console.log("PButton");
+    getPattern();
+});
+
+// Triggered when the user selects a measurement file
+// from the popup
+$("#popupSelectM").change(function(e) {
+    console.log("Measurement file CHANGED");
+    mFileName = './measurements/' + $("#popupSelectM").val();
+    console.log(mFileName);
+    // Now we have a file selected
+    $("#selectMeasurementsDiv").hide();
+    $.getJSON(mFileName, function(mdata) {
+    // Now we have measurement data
+    window.measurementData = mdata
+
+    // See whether we're ready to draw
+    drawPatternIfReady();
+    });
+});
+
+
+// Triggered when the user selects a pattern file
+// from the popup
+$("#popupSelectP").change(function(e) {
+    console.log("Pattern file CHANGED");
+    pFileName = $("#popupSelectP").val();
+    // Now we have a file selected, so hide the selection popup
+    $("#selectPatternDiv").hide();
+
+    if(typeof drawPattern == 'function')
+    {
+    // The funtion drawPattern exists, indicating that we previously loaded a pattern script
+    // So we replace the old one with the new one
+    replaceJsFile(window.scriptSelection, pFileName);
+    } else {
+    el = createJsFile(pFileName);
+    $('body').append(el);
+    }
+    // Save the file name that we loaded
+    window.scriptSelection = pFileName;
+
+    // See whether we're ready to draw
+    drawPatternIfReady();
+});
+
