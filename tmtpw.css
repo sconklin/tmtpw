@@ -1,3 +1,11 @@
+.canvas-wrapper {
+    margin: 5px;
+    padding: 10px;
+    selectable: false;
+    controlsAboveOverlay: true;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
 #selectMeasurementsDiv{
    z-index: 100;
    position: absolute;
@@ -30,3 +38,10 @@
    top: 130px;
    left: 10px;
 }​
+/* For the "inset" look only */
+html {
+    overflow: auto;
+}
+body {
+
+}

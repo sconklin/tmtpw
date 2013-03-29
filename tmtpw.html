@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <h1>Tau Meta Tau Physica Patternmaking Software</h1>
-    <LINK href="tmtpw.css" rel="stylesheet" type="text/css">
+    <h2>Tau Meta Tau Physica Patternmaking Software</h2>
+    <LINK href="tmtpw_scrollbars.css" rel="stylesheet" type="text/css">
     <script src="https://raw.github.com/kangax/fabric.js/master/dist/all.js"></script>
   </head>
   <body>
@@ -19,10 +19,34 @@
       <select id="popupSelectP">
       </select>
     </div>
+    <div id="btnZoomDiv">
     <button id="btnZoomIn">Zoom In</button>
     <button id="btnZoomOut">Zoom Out</button>
     <button id="btnResetZoom">Reset Zoom</button>
-    <canvas id="c" width="500" height="500" style="border:2px solid #ccc"></canvas>
+    </div>
+    <div id="radioAddDiv">
+        <input type = "radio"
+             name = "radioAdd"
+             id = "radioSelectPointID"
+             value = "addPoint"
+             checked = "checked">Select</>
+        <input type = "radio"
+             name = "radioAdd"
+             id = "radioAddPointID"
+             value = "addPoint">Add Point</>
+        <input type = "radio"
+             name = "radioAdd"
+             id = "radioAddLineID"
+             value = "addLine">Add Line</>
+        <input type = "radio"
+             name = "radioAdd"
+             id = "radioAddCurveID"
+             value = "addCurve">Add Curve</>
+    </div>
+    <div id="canvasWrapper" class="canvas-wrapper" style="width: window.innerWidth; height: 300px; border: 2px solid black; margin:10px; overflow: auto;">
+        <canvas id="c"/>
+    </div>
+
     <script type="text/javascript" src="jquery-1.9.1.js"></script>
     <script type="text/javascript" src="tmtpw.js"></script>
     <script type="text/javascript" src="tmtp_support.js"></script>
@@ -138,29 +162,6 @@ $("#btnZoomOut").click(function(){
 $("#btnResetZoom").click(function(){
     resetZoom();
 });
-    // zoom in
-    document.getElementById('in').onclick = function () {
-        console.log('Zoom In');
-        var objs = canvas.getObjects();
-        console.log('# objects' + objs.length);
-        //obj.scaleX = obj.scaleX * 1.25;
-        for (var i = 0; i < objs.length; i++) {
-            //canvas.remove(curSelectedObjects[i]);
-            console.log('scaleX = ' + objs[i].scaleX);
-            objs[i].scaleX = objs[i].scaleX * 1.25;
-            objs[i].scaleY = objs[i].scaleY * 1.25;
-        }
-        canvas.renderAll();
-    }
-    // zoom out
-    document.getElementById('out').onclick = function () {
-        var objs = canvas.getObjects();
-        for (var i = 0; i < objs.length; i++) {
-            //canvas.remove(curSelectedObjects[i]);
-            objs[i].scaleX = objs[i].scaleX * 0.75;
-            objs[i].scaleY = objs[i].scaleY * 0.75;
-        }
-        canvas.renderAll();
-    }
+
   </script>
 </html>
