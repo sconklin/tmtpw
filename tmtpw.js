@@ -147,7 +147,8 @@ $("#popupSelectM").change(function(e) {
 // from the popup
 $("#popupSelectP").change(function(e) {
     console.log("Pattern file CHANGED");
-    pFileName = $("#popupSelectP").val();
+    pFileName = './patterns/' + $("#popupSelectP").val();
+    console.log(pFileName);
     // Now we have a file selected, so hide the selection popup
     $("#selectPatternDiv").hide();
 
