@@ -298,12 +298,19 @@ function drawPattern(mydata, styles,md) {
 
     //update lines & text when circles are moved
     canvas.observe('object:modified', function (e) {
+
+        console.log(fabric.util.getPointer(e.e, canvas));
+
         var p = e.target;
+        var x = p.left;
+        var y = p.top;
+
 
         if (p.hasOwnProperty("text") === true) {
             //move text label to new circle location
-            console.log('Moving ' + p.text.name);
-            p.text.set({ 'left': p.left, 'top': p.top - 10});
+            console.log('Moving ' + p.text.name + ' x=' + x + ' y=' + y);
+            p.text.set({ 'left': x, 'top': y - 10});
+
 
         }
         if (p.hasOwnProperty("inPath") === true) {
@@ -312,13 +319,13 @@ function drawPattern(mydata, styles,md) {
                 ppath = p.inPath[i];
                 console.log('ppath = ' + ppath);
                 if (p.ptype === 'control') {
-                    ppath.path[1][3] = p.left; //c0.x
-                    ppath.path[1][4] = p.top; //c0.y
+                    ppath.path[1][3] = x; //c0.x
+                    ppath.path[1][4] = y; //c0.y
                 } else if (ppath.type === 'path') {
-                    ppath.path[1][5] = p.left; //p1.x
-                    ppath.path[1][6] = p.top; //p1.y
+                    ppath.path[1][5] = x; //p1.x
+                    ppath.path[1][6] = y; //p1.y
                 } else if (ppath.type === 'line') {
-                    ppath.set({ 'x2': p.left, 'y2': p.top });
+                    ppath.set({ 'x2': x, 'y2': y });
                 }
             }
         }
@@ -328,14 +335,14 @@ function drawPattern(mydata, styles,md) {
                 ppath = p.outPath[i];
                 console.log('ppath = ' + ppath);
                 if (p.ptype === 'control') {
-                    ppath.path[1][1] = p.left; //c0.x
-                    ppath.path[1][2] = p.top; //c0.y
+                    ppath.path[1][1] = x; //c0.x
+                    ppath.path[1][2] = y; //c0.y
                 } else
                 if (ppath.type === 'path') {
-                    ppath.path[0][1] = p.left;  // p0.x
-                    ppath.path[0][2] = p.top;   // p0.y
+                    ppath.path[0][1] = x;  // p0.x
+                    ppath.path[0][2] = y;   // p0.y
                 } else if (ppath.type === 'line') {
-                    ppath.set({ 'x1': p.left, 'y1': p.top });
+                    ppath.set({ 'x1': x, 'y1': y });
                 }
             }
         }
