@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <h1>Multiple connected lines and curves</h1>
+    <LINK href="tmtpw.css" rel="stylesheet" type="text/css">
+    <script src="https://raw.github.com/kangax/fabric.js/master/dist/all.js"></script>
+  </head>
+  <body>
+    <canvas id="mycanvas" width="300" height="300" style="border:1px selectable=false solid #ccc"></canvas>
+    <script type="text/javascript" src="jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="Multiple_connected_lines_and_curves.js"></script>
+  </body>
+  <script>
+    console.log('a');
+    // jquery remove cache to allow redraw
+    $.ajaxSetup({ cache: false });
+
+    var canvas = new fabric.Canvas('mycanvas');
+
+    main();
+  </script>
+</html>
