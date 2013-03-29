@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1052.3622" height="744.09448" id="svg2" version="1.1" inkscape:version="0.48.3.1 r9886" sodipodi:docname="LGM2013-OpeningDay-1.svg">
+  <defs id="defs4">
+    <linearGradient id="linearGradient3825" osb:paint="solid">
+      <stop style="stop-color:white;stop-opacity:1;" offset="0" id="stop3827" />
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#linearGradient3825" id="linearGradient4087" gradientUnits="userSpaceOnUse" gradientTransform="translate(7.2933545e-7,8.6041908e-6)" x1="100.46581" y1="745.80464" x2="912.43395" y2="745.80464" />
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="0.71600927" inkscape:cx="676.21692" inkscape:cy="340.5696" inkscape:document-units="px" inkscape:current-layer="Text" showgrid="false" inkscape:window-width="1301" inkscape:window-height="744" inkscape:window-x="65" inkscape:window-y="24" inkscape:window-maximized="1" />
+  <metadata id="metadata7">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="SlideLayer" inkscape:groupmode="layer" id="Slide" transform="translate(0,-308.2677)">
+    <g inkscape:groupmode="layer" id="Background" inkscape:label="SlideBackgroundLayer" transform="translate(-838.56911,-242.30609)">
+      <rect style="opacity:0.5;fill:#d38d5f;fill-opacity:1;stroke:#300;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:0;stroke-dasharray:none;stroke-dashoffset:0" id="PatternBackground" width="1026.2375" height="715.04053" x="855.19794" y="562.9989" ry="49.886547" rx="49.886547" />
+    </g>
+    <g inkscape:groupmode="layer" id="Title" inkscape:label="TitleLayer" transform="translate(7.1266497,11.877749)">
+      <text xml:space="preserve" style="font-size:28px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;font-family:Goudy Bookletter 1911;-inkscape-font-specification:Sans Bold" x="518.76642" y="363.45273" id="TitleText" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan3041" x="524.76642" y="363.45273" style="font-size:48px;font-style:normal;text-align:center;text-anchor:middle">Tau Meta Tau Physica </tspan><tspan sodipodi:role="line" x="518.76642" y="423.45273" id="tspan3043" style="font-size:48px;font-style:normal;text-align:center;text-anchor:middle">Patternmaking project</tspan></text>
+      <path style="fill:none;stroke:black;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" d="M 8.4051541,454.41442 L 1029.7037,452.73465" id="TitleLine" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" />
+    </g>
+    <flowRoot xml:space="preserve" id="flowRoot3031" style="font-size:28px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;font-family:Goudy Bookletter 1911;-inkscape-font-specification:Sans Bold" transform="translate(0,308.2677)"><flowRegion id="flowRegion3033"><rect id="rect3035" width="434.72562" height="47.510998" x="254.18384" y="399.63974" /></flowRegion><flowPara id="flowPara3037" /></flowRoot>    <g inkscape:groupmode="layer" id="Text" inkscape:label="TextLayer">
+      <rect style="fill:url(#linearGradient4087);fill-opacity:1;stroke:#300;stroke-width:3.99999976;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:0;stroke-dasharray:none;stroke-dashoffset:0" id="TextBackground" width="788.96375" height="478.73373" x="129.32367" y="489.8089" ry="49.886547" rx="49.886547" />
+      <path style="fill:none;stroke:black;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:48, 48;stroke-dashoffset:0" d="M 977.0324,321.17588 L 975.8446,1036.0729" id="path3051" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" />
+      <path style="fill:none;stroke:black;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" d="M 886.0526,321.24684 C 887.73237,1035.148 887.73237,1035.148 887.73237,1035.148" id="path3831" inkscape:connector-curvature="0" />
+      <g id="g3978" transform="translate(358.62738,-129.21047)">
+        <g transform="matrix(0,-1,1,0,60.057741,547.59207)" style="fill:black;fill-opacity:1" id="g3894">
+          <path style="fill:black;fill-opacity:1;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M -110.86465,102.42332 C -110.86465,157.85565 -110.86465,157.85565 -110.86465,157.85565 L -90.707442,157.85565 z" id="path3835" inkscape:connector-curvature="0" transform="translate(0,308.2677)" />
+          <path style="fill:black;fill-opacity:1;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M -110.86465,410.69102 C -110.86465,466.12335 -110.86465,466.12335 -110.86465,466.12335 L -131.02186,466.12335 z" id="path3835-2" inkscape:connector-curvature="0" />
+          <path style="fill:black;fill-opacity:1;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M -110.86465,521.55568 C -110.86465,466.12335 -110.86465,466.12335 -110.86465,466.12335 L -90.707442,466.12335 z" id="path3835-20" inkscape:connector-curvature="0" />
+          <path style="fill:black;fill-opacity:1;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M -110.86465,521.55568 C -110.86465,466.12335 -110.86465,466.12335 -110.86465,466.12335 L -131.02186,466.12335 z" id="path3835-2-9" inkscape:connector-curvature="0" />
+        </g>
+        <g transform="matrix(0,-1,1,0,60.057741,587.90649)" style="fill:black;fill-opacity:1" id="g3894-5">
+          <path style="fill:black;fill-opacity:1;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M -110.86465,102.42332 C -110.86465,157.85565 -110.86465,157.85565 -110.86465,157.85565 L -90.707442,157.85565 z" id="path3835-8" inkscape:connector-curvature="0" transform="translate(0,308.2677)" />
+          <path style="fill:black;fill-opacity:1;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M -110.86465,410.69102 C -110.86465,466.12335 -110.86465,466.12335 -110.86465,466.12335 L -131.02186,466.12335 z" id="path3835-2-92" inkscape:connector-curvature="0" />
+          <path style="fill:black;fill-opacity:1;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M -110.86465,521.55568 C -110.86465,466.12335 -110.86465,466.12335 -110.86465,466.12335 L -90.707442,466.12335 z" id="path3835-20-6" inkscape:connector-curvature="0" />
+          <path style="fill:black;fill-opacity:1;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="M -110.86465,521.55568 C -110.86465,466.12335 -110.86465,466.12335 -110.86465,466.12335 L -131.02186,466.12335 z" id="path3835-2-9-1" inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+    <text xml:space="preserve" style="font-size:28px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;font-family:Goudy Bookletter 1911;-inkscape-font-specification:Sans Bold" x="296.58777" y="635.86713" id="SlideText" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan3047" x="296.58777" y="635.86713" style="font-size:40px">Because everybody wears clothes</tspan></text>
+  </g>
+</svg>
