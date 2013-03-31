@@ -33,26 +33,34 @@ function getMeasurement(){
     // but could ultimately query a db
     $.getJSON("measurement_list.json", function(mlist) {
 
-    // we'll set up the select list, then display the popup
-    // that contains it
-    var $el = $("#popupSelectM");
-    $el.empty(); // remove old options from the select
+	// we'll set up the select list, then display the popup
+	// that contains it
+	var $el = $("#popupSelectM");
+	$el.empty(); // remove old options from the select
 
-    // Add the first prompt. Selecting this one will not trigger
-    // a change, since it is selected already
-    $el.append($("<option></option>")
-           .attr("value", "select").text("Select Measurements"));
+	// Add the first prompt. Selecting this one will not trigger
+	// a change, since it is selected already
+	$el.append($("<option></option>")
+		   .attr("value", "select").text("Select Measurements"));
 
-    // Add the choices we read from the json file
-    $.each(mlist, function(key, val) {
-        // remove the .json from the end
-        var name = val.slice(0,-5);
-        // Add the option to the list
-        $el.append($("<option></option>")
-               .attr("value", val).text(name));
-    });
-    $("#selectMeasurementsDiv").show();
-    // Now, when user selects one of these the change callback will happen
+	// Add the choices we read from the json file
+	$.each(mlist, function(key, val) {
+            // remove the .json from the end
+            var name = val.slice(0,-5);
+            // Add the option to the list
+            $el.append($("<option></option>")
+		       .attr("value", val).text(name));
+	});
+	// set the location of the popup right over the button
+	console.log("here");
+	buttonOffset = $("#SMButton").offset();
+
+	console.log( "left: " + buttonOffset.left + ", top: " + buttonOffset.top );
+	$("#selectMeasurementsDiv").offset({ top: buttonOffset.top, left: buttonOffset.left})
+	//$el.offset({ top: buttonOffset.top, left: buttonOffset.left})
+	// and display the popup
+	$("#selectMeasurementsDiv").show();
+	// Now, when user selects one of these the change callback will happen
     });
 }
 
