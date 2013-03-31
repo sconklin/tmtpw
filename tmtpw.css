@@ -9,7 +9,8 @@
 #selectMeasurementsDiv{
    z-index: 100;
    position: absolute;
-   background-color: rgba(123, 123,123, 0.8);
+   background-color: rgba(229, 204,127, 0.8);
+   border: 3px solid black;
    display: none;
    top: 0;
    left: 0;
@@ -19,7 +20,8 @@
 #selectPatternDiv{
    z-index: 100;
    position: absolute;
-   background-color: rgba(123, 123,123, 0.8);
+   background-color: rgba(229, 204,127, 0.8);
+   border: 3px solid black;
    display: none;
    top: 0;
    left: 0;
